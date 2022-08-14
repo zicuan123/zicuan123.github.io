@@ -22,7 +22,7 @@
 <h2 id="标题"><a href="#标题" class="headerlink" title="标题"></a>标题</h2><p>#+空格，1个#号表示1级标题，6个#表示6级标题，#号越多字体越小。</p>
 <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"># 标题1</span><br><span class="line">## 标题2</span><br><span class="line">### 标题3</span><br><span class="line">#### 标题4</span><br><span class="line">##### 标题5</span><br><span class="line">###### 标题6</span><br></pre></td></tr></table></figure>
 
-<h1 id="标题1"><a href="#标题1" class="headerlink" title="标题1"></a>标题1</h1><h2 id="标题2"><a href="#标题2" class="headerlink" title="标题2"></a>标题2</h2><h3 id="标题3"><a href="#标题3" class="headerlink" title="标题3"></a>标题3</h3><h4 id="标题4"><a href="#标题4" class="headerlink" title="标题4"></a>标题4</h4><h5 id="标题5"><a href="#标题5" class="headerlink" title="标题5"></a>标题5</h5><h6 id="标题6"><a href="#标题6" class="headerlink" title="标题6"></a>标题6</h6><h2 id="字体"><a href="#字体" class="headerlink" title="字体"></a>字体</h2><figure class="highlight html"><table><tr><td class="code"><pre><span class="line">**粗体文字两边各两个星号**</span><br><span class="line">*斜体是每边一个星号*</span><br><span class="line">~~删除线是每边两个波浪线~~</span><br><span class="line">==高亮字体是两边各两个等号==</span><br></pre></td></tr></table></figure>
+<h2 id="字体"><a href="#字体" class="headerlink" title="字体"></a>字体</h2><figure class="highlight html"><table><tr><td class="code"><pre><span class="line">**粗体文字两边各两个星号**</span><br><span class="line">*斜体是每边一个星号*</span><br><span class="line">~~删除线是每边两个波浪线~~</span><br><span class="line">==高亮字体是两边各两个等号==</span><br></pre></td></tr></table></figure>
 
 <p><strong>粗体</strong></p>
 <p><em>斜体</em></p>
