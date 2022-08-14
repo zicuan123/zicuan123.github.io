@@ -1,46 +1,103 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title>hexo</title>
+    <title>Hexo的搭建与美化</title>
     <url>/2022/08/13/hexo/</url>
     <content><![CDATA[<p>#hexo 基本搭建</p>
 <span id="more"></span>
 
 <p>阿巴阿巴阿巴</p>
 ]]></content>
+      <categories>
+        <category>Hexo</category>
+      </categories>
       <tags>
         <tag>hexo搭建</tag>
       </tags>
   </entry>
   <entry>
-    <title>普普通通的博客</title>
-    <url>/2022/08/12/hello-world/</url>
-    <content><![CDATA[<p>Welcome to <a href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in</p>
-<span id="more"></span>
+    <title>MarkDown快速入门(Typora)</title>
+    <url>/2022/08/12/markdown/</url>
+    <content><![CDATA[<h2 id="markdown-简介"><a href="#markdown-简介" class="headerlink" title="markdown 简介"></a>markdown 简介</h2><p>Markdown 是一种轻量级标记语言，它允许人们使用易读易写的纯文本格式编写文档<span id="more"></span>，然后转换成格式丰富的 HTML 页面。这几年 Markdown 编辑器以其独到的优势迅速火起来了，很多写作平台都开始支持了。<br>Markdown 语法常用的也就十个左右，Markdown 编辑器深受技术人员和效率写手的喜爱，很多 Markdown 编辑器还可以轻松地将文本转换为 pdf 等格式。</p>
+<h2 id="标题"><a href="#标题" class="headerlink" title="标题"></a>标题</h2><p>#+空格，1个#号表示1级标题，6个#表示6级标题，#号越多字体越小。</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"># 标题1</span><br><span class="line">## 标题2</span><br><span class="line">### 标题3</span><br><span class="line">#### 标题4</span><br><span class="line">##### 标题5</span><br><span class="line">###### 标题6</span><br></pre></td></tr></table></figure>
 
-<p><a href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure>
+<h1 id="标题1"><a href="#标题1" class="headerlink" title="标题1"></a>标题1</h1><h2 id="标题2"><a href="#标题2" class="headerlink" title="标题2"></a>标题2</h2><h3 id="标题3"><a href="#标题3" class="headerlink" title="标题3"></a>标题3</h3><h4 id="标题4"><a href="#标题4" class="headerlink" title="标题4"></a>标题4</h4><h5 id="标题5"><a href="#标题5" class="headerlink" title="标题5"></a>标题5</h5><h6 id="标题6"><a href="#标题6" class="headerlink" title="标题6"></a>标题6</h6><h2 id="字体"><a href="#字体" class="headerlink" title="字体"></a>字体</h2><figure class="highlight html"><table><tr><td class="code"><pre><span class="line">**粗体文字两边各两个星号**</span><br><span class="line">*斜体是每边一个星号*</span><br><span class="line">~~删除线是每边两个波浪线~~</span><br><span class="line">==高亮字体是两边各两个等号==</span><br></pre></td></tr></table></figure>
 
-<p>More info: <a href="https://hexo.io/docs/writing.html">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
+<p><strong>粗体</strong></p>
+<p><em>斜体</em></p>
+<p><del>删除线</del></p>
+<p>&#x3D;&#x3D;高亮&#x3D;&#x3D;</p>
+<h2 id="代码块"><a href="#代码块" class="headerlink" title="代码块"></a>代码块</h2><p>英文符号的 &#96;&#96;&#96;加输入你要写的代码语言</p>
+<p>例如&#96;&#96;&#96;javascript 就会生成一个书写javascript语言的代码块</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">function</span>(<span class="params">min,max</span>)&#123;</span><br><span class="line">	<span class="keyword">return</span> <span class="title class_">Math</span>.<span class="title function_">floor</span>(<span class="title class_">Math</span>.<span class="title function_">random</span>()*(max-min+<span class="number">1</span>)+min)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<p>More info: <a href="https://hexo.io/docs/server.html">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
+<h2 id="引用"><a href="#引用" class="headerlink" title="引用"></a>引用</h2><figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="comment">//引用语法 有层级</span></span><br><span class="line">&gt;作者：梓川</span><br><span class="line">&gt;&gt;作者：梓川</span><br><span class="line">&gt;&gt;&gt;作者：梓川</span><br></pre></td></tr></table></figure>
 
-<p>More info: <a href="https://hexo.io/docs/generating.html">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>作者：梓川</p>
+<blockquote>
+<p>作者：梓川</p>
+<blockquote>
+<p>作者：梓川</p>
+</blockquote>
+</blockquote>
+</blockquote>
+<h2 id="分割线"><a href="#分割线" class="headerlink" title="分割线"></a>分割线</h2><figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="comment">//分割线1</span></span><br><span class="line">---</span><br><span class="line"><span class="comment">//分割线2</span></span><br><span class="line">***</span><br></pre></td></tr></table></figure>
 
-<p>More info: <a href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
+<p>&#x2F;&#x2F;分割线1</p>
+<hr>
+<p>&#x2F;&#x2F;分割线2</p>
+<hr>
+<h2 id="插入图片"><a href="#插入图片" class="headerlink" title="插入图片"></a>插入图片</h2><figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="comment">//在线图片和本地图片插入格式一致，只是路径不同</span></span><br><span class="line"><span class="comment">//在线图片只需要把路径换成链接就好</span></span><br><span class="line">![我的图片](images/my.<span class="property">jpg</span>)</span><br></pre></td></tr></table></figure>
+
+<p><img src="/images/head.jpeg" alt="我的图片"></p>
+<h2 id="超链接"><a href="#超链接" class="headerlink" title="超链接"></a>超链接</h2><figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="comment">//超链接语法</span></span><br><span class="line">[我的github](<span class="attr">https</span>:<span class="comment">//github.com/zicuan123)</span></span><br><span class="line"><span class="comment">//注意在Typora软件中点击是不能跳转的，如果写到博客里就可以跳转了</span></span><br></pre></td></tr></table></figure>
+
+<p><a href="https://github.com/zicuan123">我的github</a></p>
+<h2 id="列表"><a href="#列表" class="headerlink" title="列表"></a>列表</h2><figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="comment">//无序列表 -加空格 写好一个无序列表后直接回车，后续也是无序列表</span></span><br><span class="line">- 无序列表<span class="number">1</span></span><br><span class="line">- 无序列表<span class="number">2</span></span><br><span class="line">- 无序列表<span class="number">3</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//有序列表 1+.+空格+文字 写好一个后回车也能生成无序列表</span></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>无序列表1</li>
+<li>无序列表2</li>
+<li>无序列表3</li>
+</ul>
+<ol>
+<li>有序列表</li>
+<li>有序列表</li>
+<li>有序列表</li>
+</ol>
+<h2 id="表格"><a href="#表格" class="headerlink" title="表格"></a>表格</h2><p>鼠标右键点击插入，选择表格，再选择几行几列自动生成表格了</p>
+<table>
+<thead>
+<tr>
+<th>姓名</th>
+<th>语文</th>
+<th>数学</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>张三</td>
+<td>18</td>
+<td>99</td>
+</tr>
+<tr>
+<td>李四</td>
+<td>82</td>
+<td>14</td>
+</tr>
+<tr>
+<td>王五</td>
+<td>99</td>
+<td>99</td>
+</tr>
+</tbody></table>
 ]]></content>
       <categories>
-        <category>前端开发</category>
-        <category>hexo搭建与美化</category>
-        <category>markdown</category>
+        <category>MarkDown</category>
       </categories>
       <tags>
-        <tag>hexo搭建</tag>
-        <tag>啊这</tag>
-        <tag>web前端</tag>
+        <tag>markdown</tag>
       </tags>
   </entry>
 </search>
