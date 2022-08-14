@@ -1,6 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>hexo</title>
+    <url>/2022/08/13/hexo/</url>
+    <content><![CDATA[<p>#hexo 基本搭建</p>
+<span id="more"></span>
+
+<p>阿巴阿巴阿巴</p>
+]]></content>
+      <tags>
+        <tag>hexo搭建</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>普普通通的博客</title>
     <url>/2022/08/12/hello-world/</url>
     <content><![CDATA[<p>Welcome to <a href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in</p>
@@ -26,21 +38,9 @@
         <category>markdown</category>
       </categories>
       <tags>
+        <tag>hexo搭建</tag>
         <tag>啊这</tag>
-        <tag>hexo搭建</tag>
         <tag>web前端</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>hexo</title>
-    <url>/2022/08/13/hexo/</url>
-    <content><![CDATA[<p>#hexo 基本搭建</p>
-<span id="more"></span>
-
-<p>阿巴阿巴阿巴</p>
-]]></content>
-      <tags>
-        <tag>hexo搭建</tag>
       </tags>
   </entry>
 </search>
