@@ -1,6 +1,120 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>HTML、CSS底层原理问题</title>
+    <url>/2022/08/13/HTML%E5%BA%95%E5%B1%82%E5%8E%9F%E7%90%86/</url>
+    <content><![CDATA[<h3 id="1-margin-auto-为什么只能实现块级盒子的水平居中无法实现垂直居中"><a href="#1-margin-auto-为什么只能实现块级盒子的水平居中无法实现垂直居中" class="headerlink" title="1.margin: auto 为什么只能实现块级盒子的水平居中无法实现垂直居中?"></a>1.margin: auto 为什么只能实现块级盒子的水平居中无法实现垂直居中?</h3><h5 id="1-水平居中原理"><a href="#1-水平居中原理" class="headerlink" title="1.水平居中原理"></a>1.水平居中原理</h5><p>因为块级元素具有默认宽度，默认为其父级宽度的百分之百，所以块级元素知道往右走多少能够到达中间位置</p>
+<span id="more"></span>
+
+<h5 id="2-无法垂直居中原理"><a href="#2-无法垂直居中原理" class="headerlink" title="2.无法垂直居中原理"></a>2.无法垂直居中原理</h5><p>块级元素的默认高度为 0，所以当想使用<code>margin：auto</code>让其居中时，它只知道水平方向的距离，不知道垂直方向的距离</p>
+<h3 id="2-为何下列代码实现的盒子没有背景颜色"><a href="#2-为何下列代码实现的盒子没有背景颜色" class="headerlink" title="2.为何下列代码实现的盒子没有背景颜色"></a>2.为何下列代码实现的盒子没有背景颜色</h3><figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="selector-class">.box</span> &#123;</span><br><span class="line">  <span class="attribute">width</span>: <span class="number">200px</span>;</span><br><span class="line">  <span class="attribute">height</span>: <span class="number">200px</span>;</span><br><span class="line">  <span class="attribute">background-color</span>: pink;</span><br><span class="line"></span><br><span class="line">  <span class="attribute">background</span>: <span class="built_in">url</span>(<span class="string">小猫.png</span>) no-repeat right center;</span><br><span class="line">  <span class="attribute">background-size</span>: <span class="number">60px</span> <span class="number">60px</span>;</span><br><span class="line">  <span class="attribute">border</span>: <span class="number">1px</span> solid <span class="number">#ccc</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><img src="/2022/08/13/HTML%E5%BA%95%E5%B1%82%E5%8E%9F%E7%90%86/image1.png" alt="小猫"></p>
+<h5 id="解析"><a href="#解析" class="headerlink" title="解析"></a>解析</h5><ol>
+<li>background 是复合属性，复合属性会覆盖掉上一层的背景色</li>
+<li>background 的默认颜色是透明色，所以 transparent 覆盖掉了 pink</li>
+</ol>
+<h5 id="方案"><a href="#方案" class="headerlink" title="方案"></a>方案</h5><ol>
+<li>都使用复合属性</li>
+<li>把单一的属性卸载复合属性后面，覆盖掉默认的参数</li>
+</ol>
+<h3 id="3-body-和-html-标签的默认高度"><a href="#3-body-和-html-标签的默认高度" class="headerlink" title="3.body 和 html 标签的默认高度"></a>3.body 和 html 标签的默认高度</h3><h5 id="答案"><a href="#答案" class="headerlink" title="答案"></a>答案</h5><p>body 和 html 的默认高度都为 0，这也是以下代码为何没有任何样式出现的原因</p>
+<p><img src="/2022/08/13/HTML%E5%BA%95%E5%B1%82%E5%8E%9F%E7%90%86/image2.png" alt="image-20220817142953738"></p>
+<p>浏览器样式：<img src="/2022/08/13/HTML%E5%BA%95%E5%B1%82%E5%8E%9F%E7%90%86/image3.png" alt="image-20220817142812467"></p>
+<p>因为 box 的高度 100%是继承的 body 的，而 body 的高度默认为 0，所以 box 的高度为 0，因此页面没有任何样式出现</p>
+<h3 id="问以下代码页面会呈现什么颜色"><a href="#问以下代码页面会呈现什么颜色" class="headerlink" title="问以下代码页面会呈现什么颜色"></a>问以下代码页面会呈现什么颜色</h3><figure class="highlight css"><table><tr><td class="code"><pre><span class="line">* &#123;</span><br><span class="line">  <span class="attribute">margin</span>: <span class="number">0</span>;</span><br><span class="line">  <span class="attribute">padding</span>: <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="selector-tag">html</span> &#123;</span><br><span class="line">  <span class="attribute">background-color</span>: skyblue;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-tag">body</span> &#123;</span><br><span class="line">  <span class="attribute">background-color</span>: pink;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h5 id="答案-：天蓝色"><a href="#答案-：天蓝色" class="headerlink" title="答案 ：天蓝色"></a>答案 ：天蓝色</h5><h6 id="解析-1"><a href="#解析-1" class="headerlink" title="解析"></a>解析</h6><p>当 body(默认高度为 0)有颜色的时候,浏览器判定你需要让全屏都呈现一个颜色,就会把颜色拿过去,自己显示</p>
+<p>当 body 和 html(默认高度为 0)同时有背景色时,浏览器会觉得 html 离自己更近,所以会选择使用 html 的颜色</p>
+<h6 id="误区"><a href="#误区" class="headerlink" title="误区"></a>误区</h6><p>此时的 body 和 html 高度依然是 0，页面显示的颜色是浏览器的原因，而与 body 和 html 无关</p>
+<p>浏览器会替页面做很多操作</p>
+]]></content>
+      <categories>
+        <category>Web前端</category>
+        <category>HTML</category>
+      </categories>
+      <tags>
+        <tag>HTML</tag>
+        <tag>CSS</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>使用Hexo搭建博客并部署到GitHub</title>
+    <url>/2022/08/13/Hexo/</url>
+    <content><![CDATA[<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>Hexo 是一个快速、简洁且高效的博客框架。Hexo 使用 <a href="http://daringfireball.net/projects/markdown/">Markdown</a>（或其他渲染引擎）解析文章，在几秒内，即可利用靓丽的主题生成静态网页。</p>
+<span id="more"></span>
+
+<p>[Hexo 官方安装教程](<a href="https://hexo.io/zh-cn/docs/">文档 | Hexo</a>)</p>
+<h2 id="GitHub-配置"><a href="#GitHub-配置" class="headerlink" title="GitHub 配置"></a>GitHub 配置</h2><h3 id="1-新建仓库"><a href="#1-新建仓库" class="headerlink" title="1.新建仓库"></a>1.新建仓库</h3><p>仓库的名字不能随便取，必须是你的 GitHub 用户名加.github.io</p>
+<h3 id="2-配置-SSH-免密登录"><a href="#2-配置-SSH-免密登录" class="headerlink" title="2.配置 SSH 免密登录"></a>2.配置 SSH 免密登录</h3><p>为什么要配置这个呢？因为你提交代码肯定要拥有你的 github 权限才可以，但是直接使用用户名和密码太不安全了，所以我们使用 ssh key 来解决本地和服务器的连接问题。</p>
+<p>简单的来说就是给予你当前电脑访问你 GitHub 仓库的权限</p>
+<h4 id="操作步骤"><a href="#操作步骤" class="headerlink" title="操作步骤"></a>操作步骤</h4><ol>
+<li>随意找一个文件夹，右键用 git bash hero 打开</li>
+<li>输入指令<code>ssh-keygen -t rsa -C &quot;邮箱&quot;</code> 此处邮箱填写自己的邮箱</li>
+<li>回车敲击三次，成功后会生成一个文件夹，路径在 C:\Users\ .ssh</li>
+<li>文件夹里有两个文件，其中一个<strong>id_rsa id_rsa.pub</strong>就是我们的公开的 ssh 码，也是给管理员这个 ssh，让他来添加</li>
+<li>在 GitHub 或者 Gitee 上添加 SSH key</li>
+<li><ul>
+<li>Title： 随便写</li>
+<li>Key：将本地的 id_rsa.pub 文件用记事本打开，复制全部内容粘贴到 GitHub 仓库的 SSH Keys 位置</li>
+</ul>
+</li>
+</ol>
+<p><img src="/2022/08/13/Hexo/image1.png" alt="image-20220815143959539"></p>
+<h3 id="3-将博客部署到-github-个人主页上"><a href="#3-将博客部署到-github-个人主页上" class="headerlink" title="3.将博客部署到 github 个人主页上"></a>3.将博客部署到 github 个人主页上</h3><ol>
+<li><p>第一步 在创建的博客文件的根目录下右键用 git bash hero 打开</p>
+</li>
+<li><p>输入命令：<code>npm install hexo-deployer-git --save</code> 安装 说明：必须安装，否则执行 hexo d 的话会报错</p>
+</li>
+<li><p>编辑博客根目录下的_config.yml 文件, 在文件末尾修改配置文件：</p>
+</li>
+<li><pre><code class="js">deploy:
+  type: git
+  repository: github上对应仓库的ssh 链接
+    //也可使用https地址，如：https://github.com/Github用户名/Github用户名.github.io.git
+  branch: main  //此为github默认的主分支，之前是master 现在改为了main ，切记一定要改为main
+</code></pre>
+</li>
+</ol>
+<p><strong>说明：</strong>仓库的 ssh 链接如下</p>
+<p><img src="/2022/08/13/Hexo/image2.png" alt="image-20220815144613878"></p>
+<ol start="5">
+<li>在 git 命令里输入 hexo clean 再输入 hexo g 最后输入 hexo d</li>
+</ol>
+<p>至此博客就部署好了 <strong>此处附加上 hexo 框架常用的指令：</strong></p>
+<table>
+<thead>
+<tr>
+<th>指令</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>hexo clean &amp;&amp; hexo g</td>
+<td>清除本地项目并重新生成 （重新部署时使用）</td>
+</tr>
+<tr>
+<td>hexo g</td>
+<td>重新生成</td>
+</tr>
+<tr>
+<td>hexo s</td>
+<td>开启本地预览</td>
+</tr>
+<tr>
+<td>hexo d</td>
+<td>推送到 github</td>
+</tr>
+</tbody></table>
+]]></content>
+      <categories>
+        <category>Hexo</category>
+      </categories>
+      <tags>
+        <tag>hexo搭建</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Hexo Next主题的使用与美化</title>
     <url>/2022/08/13/Next/</url>
     <content><![CDATA[<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><ul>
@@ -51,9 +165,44 @@
 <h3 id="添加右上角github绑带"><a href="#添加右上角github绑带" class="headerlink" title="添加右上角github绑带"></a>添加右上角github绑带</h3><p>打开主题配置<code>_config.yml</code>，进行相关参数设置</p>
 <figure class="highlight js"><table><tr><td class="code"><pre><span class="line"># <span class="title class_">Value</span> after <span class="string">`||`</span> delimeter is the title and aria-label name.</span><br><span class="line"><span class="attr">github_banner</span>: <span class="attr">https</span>:<span class="comment">//github.com/nightmaredimple || Follow me on GitHub #添加右上角github绑带</span></span><br></pre></td></tr></table></figure>
 
-<h2 id="Next-进阶配置"><a href="#Next-进阶配置" class="headerlink" title="Next 进阶配置"></a>Next 进阶配置</h2><h3 id="启用-Pjax"><a href="#启用-Pjax" class="headerlink" title="启用 Pjax"></a>启用 Pjax</h3><p>Pjax 主要用于加速 Web 页面的切换速度，同时也可以用来解决 Aplayer 音频播发器切换页面后播放出现中断的问题</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"># 进入<span class="title class_">Next</span>主题的目录</span><br><span class="line">$ cd themes/next</span><br><span class="line"></span><br><span class="line"># 下载资源文件</span><br><span class="line">$ git clone <span class="attr">https</span>:<span class="comment">//github.com/theme-next/theme-next-pjax source/lib/pjax</span></span><br></pre></td></tr></table></figure>
+<h2 id="Next-进阶配置"><a href="#Next-进阶配置" class="headerlink" title="Next 进阶配置"></a>Next 进阶配置</h2><h3 id="添加背景图片"><a href="#添加背景图片" class="headerlink" title="添加背景图片"></a>添加背景图片</h3><ul>
+<li><p>1.将自己想要设置的背景图片保存到<code>themes/next/source/images</code>中，或者复制链接</p>
+</li>
+<li><p>2.在<code>themes/next/source/</code>下新建一个名为<code>_data</code>的文件夹，在文件夹里新建一个<code>styles.styl</code>文件</p>
+</li>
+<li><p>3.在文件中添加如下代码,可以自己修改样式</p>
+</li>
+<li><pre><code class="css">body &#123;
+     background:url(/images/IU.jpg);
+     background-repeat: no-repeat;
+  background-attachment:fixed;
+  background-position: 50% 50%;
+  background-size: cover;
+&#125;
 
+//博客内容透明化
+//文章内容的透明度设置
+.content-wrap &#123;
+  opacity: 0.8;
+&#125;
+.main-inner &#123; 
+   // margin-top: 60px;
+   // padding: 60px 60px 60px 60px;
+
+   // opacity: 0.8;
+&#125;
+//侧边框的透明度设置
+.sidebar &#123;
+  opacity: 0.8;
+&#125;
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line">- 4.将`themes/next/_config.yml`配置文件中`custom_file_path:`下的`#style: source/_data/styles.styl`#号去掉</span><br><span class="line"></span><br><span class="line">- 5.在`themes/next/source/css`下找到`main.styl`文件，并在最后一行添上如下代码：</span><br><span class="line"></span><br><span class="line">- ```css</span><br><span class="line">  // Custom Layer</span><br><span class="line">  // --------------------------------------------------</span><br><span class="line">  for $inject_style in hexo-config(&#x27;injects.style&#x27;)</span><br><span class="line">    @import &#x27;../_data/styles.styl&#x27;;</span><br></pre></td></tr></table></figure>
+</code></pre>
+</li>
+<li><p>6.在git bash hero 中执行以下命令：</p>
+</li>
+<li><p>&#96;&#96;&#96;js<br>hexo clean<br>hexo g<br>hexo s</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line">### 启用 Pjax</span><br><span class="line"></span><br><span class="line">Pjax 主要用于加速 Web 页面的切换速度，同时也可以用来解决 Aplayer 音频播发器切换页面后播放出现中断的问题</span><br><span class="line"></span><br><span class="line">```js</span><br><span class="line"># 进入Next主题的目录</span><br><span class="line">$ cd themes/next</span><br><span class="line"></span><br><span class="line"># 下载资源文件</span><br><span class="line">$ git clone https://github.com/theme-next/theme-next-pjax source/lib/pjax</span><br></pre></td></tr></table></figure></li>
+</ul>
 <p>更改 Next 主题的配置文件 <code>themes/next/_config.yml</code>，设置以下内容</p>
 <figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="attr">pjax</span>: <span class="literal">true</span></span><br></pre></td></tr></table></figure>
 
@@ -123,6 +272,13 @@
 <figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="attr">live2d</span>:</span><br><span class="line">  <span class="attr">enable</span>: <span class="literal">true</span></span><br><span class="line">  <span class="attr">scriptFrom</span>: local</span><br><span class="line">  <span class="attr">pluginRootPath</span>: live2dw/</span><br><span class="line">  <span class="attr">pluginJsPath</span>: lib/</span><br><span class="line">  <span class="attr">pluginModelPath</span>: assets/</span><br><span class="line">  <span class="attr">tagMode</span>: <span class="literal">false</span></span><br><span class="line">  <span class="attr">log</span>: <span class="literal">false</span></span><br><span class="line">  <span class="attr">model</span>:</span><br><span class="line">    <span class="attr">use</span>: live2d-widget-model-tororo</span><br><span class="line">  <span class="attr">display</span>:</span><br><span class="line">    <span class="attr">position</span>: right</span><br><span class="line">    <span class="attr">width</span>: <span class="number">150</span></span><br><span class="line">    <span class="attr">height</span>: <span class="number">300</span></span><br><span class="line">  <span class="attr">mobile</span>:</span><br><span class="line">    <span class="attr">show</span>: <span class="literal">true</span></span><br><span class="line">  <span class="attr">react</span>:</span><br><span class="line">    <span class="attr">opacity</span>: <span class="number">0.7</span></span><br></pre></td></tr></table></figure>
 
 <p>use对应的参数，可以对照着<a href="https://github.com/xiazeyu/live2d-widget-models">lived2d</a>进行选择</p>
+<h2 id="图片无法显示的完美解决"><a href="#图片无法显示的完美解决" class="headerlink" title="图片无法显示的完美解决"></a>图片无法显示的完美解决</h2><p>1.要添加图片，先npm install 一个<a href="https://so.csdn.net/so/search?q=hexo&spm=1001.2101.3001.7020">hexo</a>-asset-image的依赖</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line">npm install <span class="attr">https</span>:<span class="comment">//github.com/CodeFalling/hexo-asset-image --save</span></span><br></pre></td></tr></table></figure>
+
+<p>2.然后把_config.yml中的post_asset_folder设为true，这个配置的意思是每次new post一个博客，会增加一个和博客同名的文件夹。</p>
+<p>3.把图片放到.md文件的同名文件夹”first-page”里，最后在.md文件中引用图片</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line">![图片描述]（./文件名/图片名）</span><br></pre></td></tr></table></figure>
+
 ]]></content>
       <categories>
         <category>Hexo</category>
@@ -130,120 +286,6 @@
       <tags>
         <tag>hexo搭建</tag>
         <tag>next主题</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>HTML、CSS底层原理问题</title>
-    <url>/2022/08/13/HTML%E5%BA%95%E5%B1%82%E5%8E%9F%E7%90%86/</url>
-    <content><![CDATA[<h3 id="1-margin-auto-为什么只能实现块级盒子的水平居中无法实现垂直居中"><a href="#1-margin-auto-为什么只能实现块级盒子的水平居中无法实现垂直居中" class="headerlink" title="1.margin: auto 为什么只能实现块级盒子的水平居中无法实现垂直居中?"></a>1.margin: auto 为什么只能实现块级盒子的水平居中无法实现垂直居中?</h3><h5 id="1-水平居中原理"><a href="#1-水平居中原理" class="headerlink" title="1.水平居中原理"></a>1.水平居中原理</h5><p>因为块级元素具有默认宽度，默认为其父级宽度的百分之百，所以块级元素知道往右走多少能够到达中间位置</p>
-<span id="more"></span>
-
-<h5 id="2-无法垂直居中原理"><a href="#2-无法垂直居中原理" class="headerlink" title="2.无法垂直居中原理"></a>2.无法垂直居中原理</h5><p>块级元素的默认高度为 0，所以当想使用<code>margin：auto</code>让其居中时，它只知道水平方向的距离，不知道垂直方向的距离</p>
-<h3 id="2-为何下列代码实现的盒子没有背景颜色"><a href="#2-为何下列代码实现的盒子没有背景颜色" class="headerlink" title="2.为何下列代码实现的盒子没有背景颜色"></a>2.为何下列代码实现的盒子没有背景颜色</h3><figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="selector-class">.box</span> &#123;</span><br><span class="line">  <span class="attribute">width</span>: <span class="number">200px</span>;</span><br><span class="line">  <span class="attribute">height</span>: <span class="number">200px</span>;</span><br><span class="line">  <span class="attribute">background-color</span>: pink;</span><br><span class="line"></span><br><span class="line">  <span class="attribute">background</span>: <span class="built_in">url</span>(<span class="string">小猫.png</span>) no-repeat right center;</span><br><span class="line">  <span class="attribute">background-size</span>: <span class="number">60px</span> <span class="number">60px</span>;</span><br><span class="line">  <span class="attribute">border</span>: <span class="number">1px</span> solid <span class="number">#ccc</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p><img src="D:\blog\source_posts\web\html-css\images\image1.png"></p>
-<h5 id="解析"><a href="#解析" class="headerlink" title="解析"></a>解析</h5><ol>
-<li>background 是复合属性，复合属性会覆盖掉上一层的背景色</li>
-<li>background 的默认颜色是透明色，所以 transparent 覆盖掉了 pink</li>
-</ol>
-<h5 id="方案"><a href="#方案" class="headerlink" title="方案"></a>方案</h5><ol>
-<li>都使用复合属性</li>
-<li>把单一的属性卸载复合属性后面，覆盖掉默认的参数</li>
-</ol>
-<h3 id="3-body-和-html-标签的默认高度"><a href="#3-body-和-html-标签的默认高度" class="headerlink" title="3.body 和 html 标签的默认高度"></a>3.body 和 html 标签的默认高度</h3><h5 id="答案"><a href="#答案" class="headerlink" title="答案"></a>答案</h5><p>body 和 html 的默认高度都为 0，这也是以下代码为何没有任何样式出现的原因</p>
-<p><img src="C:\Users\86185\AppData\Roaming\Typora\typora-user-images\image-20220817142953738.png" alt="image-20220817142953738"></p>
-<p>浏览器样式：<img src="C:\Users\86185\AppData\Roaming\Typora\typora-user-images\image-20220817142812467.png" alt="image-20220817142812467"></p>
-<p>因为 box 的高度 100%是继承的 body 的，而 body 的高度默认为 0，所以 box 的高度为 0，因此页面没有任何样式出现</p>
-<h3 id="问以下代码页面会呈现什么颜色"><a href="#问以下代码页面会呈现什么颜色" class="headerlink" title="问以下代码页面会呈现什么颜色"></a>问以下代码页面会呈现什么颜色</h3><figure class="highlight css"><table><tr><td class="code"><pre><span class="line">* &#123;</span><br><span class="line">  <span class="attribute">margin</span>: <span class="number">0</span>;</span><br><span class="line">  <span class="attribute">padding</span>: <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="selector-tag">html</span> &#123;</span><br><span class="line">  <span class="attribute">background-color</span>: skyblue;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-tag">body</span> &#123;</span><br><span class="line">  <span class="attribute">background-color</span>: pink;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h5 id="答案-：天蓝色"><a href="#答案-：天蓝色" class="headerlink" title="答案 ：天蓝色"></a>答案 ：天蓝色</h5><h6 id="解析-1"><a href="#解析-1" class="headerlink" title="解析"></a>解析</h6><p>当 body(默认高度为 0)有颜色的时候,浏览器判定你需要让全屏都呈现一个颜色,就会把颜色拿过去,自己显示</p>
-<p>当 body 和 html(默认高度为 0)同时有背景色时,浏览器会觉得 html 离自己更近,所以会选择使用 html 的颜色</p>
-<h6 id="误区"><a href="#误区" class="headerlink" title="误区"></a>误区</h6><p>此时的 body 和 html 高度依然是 0，页面显示的颜色是浏览器的原因，而与 body 和 html 无关</p>
-<p>浏览器会替页面做很多操作</p>
-]]></content>
-      <categories>
-        <category>Web前端</category>
-        <category>HTML</category>
-      </categories>
-      <tags>
-        <tag>HTML</tag>
-        <tag>CSS</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>使用Hexo搭建博客并部署到GitHub</title>
-    <url>/2022/08/13/hexo/</url>
-    <content><![CDATA[<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>Hexo 是一个快速、简洁且高效的博客框架。Hexo 使用 <a href="http://daringfireball.net/projects/markdown/">Markdown</a>（或其他渲染引擎）解析文章，在几秒内，即可利用靓丽的主题生成静态网页。</p>
-<span id="more"></span>
-
-<p>[Hexo 官方安装教程](<a href="https://hexo.io/zh-cn/docs/">文档 | Hexo</a>)</p>
-<h2 id="GitHub-配置"><a href="#GitHub-配置" class="headerlink" title="GitHub 配置"></a>GitHub 配置</h2><h3 id="1-新建仓库"><a href="#1-新建仓库" class="headerlink" title="1.新建仓库"></a>1.新建仓库</h3><p>仓库的名字不能随便取，必须是你的 GitHub 用户名加.github.io</p>
-<h3 id="2-配置-SSH-免密登录"><a href="#2-配置-SSH-免密登录" class="headerlink" title="2.配置 SSH 免密登录"></a>2.配置 SSH 免密登录</h3><p>为什么要配置这个呢？因为你提交代码肯定要拥有你的 github 权限才可以，但是直接使用用户名和密码太不安全了，所以我们使用 ssh key 来解决本地和服务器的连接问题。</p>
-<p>简单的来说就是给予你当前电脑访问你 GitHub 仓库的权限</p>
-<h4 id="操作步骤"><a href="#操作步骤" class="headerlink" title="操作步骤"></a>操作步骤</h4><ol>
-<li>随意找一个文件夹，右键用 git bash hero 打开</li>
-<li>输入指令<code>ssh-keygen -t rsa -C &quot;邮箱&quot;</code> 此处邮箱填写自己的邮箱</li>
-<li>回车敲击三次，成功后会生成一个文件夹，路径在 C:\Users\ .ssh</li>
-<li>文件夹里有两个文件，其中一个<strong>id_rsa id_rsa.pub</strong>就是我们的公开的 ssh 码，也是给管理员这个 ssh，让他来添加</li>
-<li>在 GitHub 或者 Gitee 上添加 SSH key</li>
-<li><ul>
-<li>Title： 随便写</li>
-<li>Key：将本地的 id_rsa.pub 文件用记事本打开，复制全部内容粘贴到 GitHub 仓库的 SSH Keys 位置</li>
-</ul>
-</li>
-</ol>
-<p><img src="C:\Users\86185\AppData\Roaming\Typora\typora-user-images\image-20220815143959539.png" alt="image-20220815143959539"></p>
-<h3 id="3-将博客部署到-github-个人主页上"><a href="#3-将博客部署到-github-个人主页上" class="headerlink" title="3.将博客部署到 github 个人主页上"></a>3.将博客部署到 github 个人主页上</h3><ol>
-<li><p>第一步 在创建的博客文件的根目录下右键用 git bash hero 打开</p>
-</li>
-<li><p>输入命令：<code>npm install hexo-deployer-git --save</code> 安装 说明：必须安装，否则执行 hexo d 的话会报错</p>
-</li>
-<li><p>编辑博客根目录下的_config.yml 文件, 在文件末尾修改配置文件：</p>
-</li>
-<li><pre><code class="js">deploy:
-  type: git
-  repository: github上对应仓库的ssh 链接
-    //也可使用https地址，如：https://github.com/Github用户名/Github用户名.github.io.git
-  branch: main  //此为github默认的主分支，之前是master 现在改为了main ，切记一定要改为main
-</code></pre>
-</li>
-</ol>
-<p><strong>说明：</strong>仓库的 ssh 链接如下</p>
-<p><img src="C:\Users\86185\AppData\Roaming\Typora\typora-user-images\image-20220815144613878.png" alt="image-20220815144613878"></p>
-<ol start="5">
-<li>在 git 命令里输入 hexo clean 再输入 hexo g 最后输入 hexo d</li>
-</ol>
-<p>至此博客就部署好了 <strong>此处附加上 hexo 框架常用的指令：</strong></p>
-<table>
-<thead>
-<tr>
-<th>指令</th>
-<th>说明</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>hexo clean &amp;&amp; hexo g</td>
-<td>清除本地项目并重新生成 （重新部署时使用）</td>
-</tr>
-<tr>
-<td>hexo g</td>
-<td>重新生成</td>
-</tr>
-<tr>
-<td>hexo s</td>
-<td>开启本地预览</td>
-</tr>
-<tr>
-<td>hexo d</td>
-<td>推送到 github</td>
-</tr>
-</tbody></table>
-]]></content>
-      <categories>
-        <category>Hexo</category>
-      </categories>
-      <tags>
-        <tag>hexo搭建</tag>
       </tags>
   </entry>
   <entry>
@@ -329,44 +371,6 @@
       </categories>
       <tags>
         <tag>markdown</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>HTML、CSS底层原理问题</title>
-    <url>/2022/08/13/web/html-css/HTML%E5%BA%95%E5%B1%82%E5%8E%9F%E7%90%86/</url>
-    <content><![CDATA[<h3 id="1-margin-auto-为什么只能实现块级盒子的水平居中无法实现垂直居中"><a href="#1-margin-auto-为什么只能实现块级盒子的水平居中无法实现垂直居中" class="headerlink" title="1.margin: auto 为什么只能实现块级盒子的水平居中无法实现垂直居中?"></a>1.margin: auto 为什么只能实现块级盒子的水平居中无法实现垂直居中?</h3><h5 id="1-水平居中原理"><a href="#1-水平居中原理" class="headerlink" title="1.水平居中原理"></a>1.水平居中原理</h5><p>因为块级元素具有默认宽度，默认为其父级宽度的百分之百，所以块级元素知道往右走多少能够到达中间位置</p>
-<span id="more"></span>
-
-<h5 id="2-无法垂直居中原理"><a href="#2-无法垂直居中原理" class="headerlink" title="2.无法垂直居中原理"></a>2.无法垂直居中原理</h5><p>块级元素的默认高度为 0，所以当想使用<code>margin：auto</code>让其居中时，它只知道水平方向的距离，不知道垂直方向的距离</p>
-<h3 id="2-为何下列代码实现的盒子没有背景颜色"><a href="#2-为何下列代码实现的盒子没有背景颜色" class="headerlink" title="2.为何下列代码实现的盒子没有背景颜色"></a>2.为何下列代码实现的盒子没有背景颜色</h3><figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="selector-class">.box</span> &#123;</span><br><span class="line">  <span class="attribute">width</span>: <span class="number">200px</span>;</span><br><span class="line">  <span class="attribute">height</span>: <span class="number">200px</span>;</span><br><span class="line">  <span class="attribute">background-color</span>: pink;</span><br><span class="line"></span><br><span class="line">  <span class="attribute">background</span>: <span class="built_in">url</span>(<span class="string">小猫.png</span>) no-repeat right center;</span><br><span class="line">  <span class="attribute">background-size</span>: <span class="number">60px</span> <span class="number">60px</span>;</span><br><span class="line">  <span class="attribute">border</span>: <span class="number">1px</span> solid <span class="number">#ccc</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p><img src="C:\Users\86185\AppData\Roaming\Typora\typora-user-images\image-20220817141856505.png" alt="image-20220817141856505"></p>
-<h5 id="解析"><a href="#解析" class="headerlink" title="解析"></a>解析</h5><ol>
-<li>background 是复合属性，复合属性会覆盖掉上一层的背景色</li>
-<li>background 的默认颜色是透明色，所以 transparent 覆盖掉了 pink</li>
-</ol>
-<h5 id="方案"><a href="#方案" class="headerlink" title="方案"></a>方案</h5><ol>
-<li>都使用复合属性</li>
-<li>把单一的属性卸载复合属性后面，覆盖掉默认的参数</li>
-</ol>
-<h3 id="3-body-和-html-标签的默认高度"><a href="#3-body-和-html-标签的默认高度" class="headerlink" title="3.body 和 html 标签的默认高度"></a>3.body 和 html 标签的默认高度</h3><h5 id="答案"><a href="#答案" class="headerlink" title="答案"></a>答案</h5><p>body 和 html 的默认高度都为 0，这也是以下代码为何没有任何样式出现的原因</p>
-<p><img src="C:\Users\86185\AppData\Roaming\Typora\typora-user-images\image-20220817142953738.png" alt="image-20220817142953738"></p>
-<p>浏览器样式：<img src="C:\Users\86185\AppData\Roaming\Typora\typora-user-images\image-20220817142812467.png" alt="image-20220817142812467"></p>
-<p>因为 box 的高度 100%是继承的 body 的，而 body 的高度默认为 0，所以 box 的高度为 0，因此页面没有任何样式出现</p>
-<h3 id="问以下代码页面会呈现什么颜色"><a href="#问以下代码页面会呈现什么颜色" class="headerlink" title="问以下代码页面会呈现什么颜色"></a>问以下代码页面会呈现什么颜色</h3><figure class="highlight css"><table><tr><td class="code"><pre><span class="line">* &#123;</span><br><span class="line">  <span class="attribute">margin</span>: <span class="number">0</span>;</span><br><span class="line">  <span class="attribute">padding</span>: <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="selector-tag">html</span> &#123;</span><br><span class="line">  <span class="attribute">background-color</span>: skyblue;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-tag">body</span> &#123;</span><br><span class="line">  <span class="attribute">background-color</span>: pink;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h5 id="答案-：天蓝色"><a href="#答案-：天蓝色" class="headerlink" title="答案 ：天蓝色"></a>答案 ：天蓝色</h5><h6 id="解析-1"><a href="#解析-1" class="headerlink" title="解析"></a>解析</h6><p>当 body(默认高度为 0)有颜色的时候,浏览器判定你需要让全屏都呈现一个颜色,就会把颜色拿过去,自己显示</p>
-<p>当 body 和 html(默认高度为 0)同时有背景色时,浏览器会觉得 html 离自己更近,所以会选择使用 html 的颜色</p>
-<h6 id="误区"><a href="#误区" class="headerlink" title="误区"></a>误区</h6><p>此时的 body 和 html 高度依然是 0，页面显示的颜色是浏览器的原因，而与 body 和 html 无关</p>
-<p>浏览器会替页面做很多操作</p>
-]]></content>
-      <categories>
-        <category>Web前端</category>
-        <category>HTML</category>
-      </categories>
-      <tags>
-        <tag>HTML</tag>
-        <tag>CSS</tag>
       </tags>
   </entry>
 </search>
