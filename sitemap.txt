@@ -1,3 +1,5 @@
+http://zicuan123.github.io/2022/08/13/HTML%E5%BA%95%E5%B1%82%E5%8E%9F%E7%90%86/
+http://zicuan123.github.io/2022/08/13/web/html-css/HTML%E5%BA%95%E5%B1%82%E5%8E%9F%E7%90%86/
 http://zicuan123.github.io/2022/08/13/Next/
 http://zicuan123.github.io/2022/08/13/hexo/
 http://zicuan123.github.io/2022/08/12/markdown/
@@ -6,6 +8,10 @@ http://zicuan123.github.io/tags/index.html
 http://zicuan123.github.io/
 http://zicuan123.github.io/tags/hexo%E6%90%AD%E5%BB%BA/
 http://zicuan123.github.io/tags/next%E4%B8%BB%E9%A2%98/
+http://zicuan123.github.io/tags/HTML/
+http://zicuan123.github.io/tags/CSS/
 http://zicuan123.github.io/tags/markdown/
 http://zicuan123.github.io/categories/Hexo/
+http://zicuan123.github.io/categories/Web%E5%89%8D%E7%AB%AF/
 http://zicuan123.github.io/categories/MarkDown/
+http://zicuan123.github.io/categories/Web%E5%89%8D%E7%AB%AF/HTML/
