@@ -20,23 +20,28 @@
 
 <script class="next-config" data-name="main" type="application/json">{"hostname":"zicuan123.github.io","root":"/","images":"/images","scheme":"Gemini","darkmode":false,"version":"8.12.3","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":true,"show_result":false,"style":"flat"},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":true,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
 
-    <meta property="og:type" content="website">
-<meta property="og:title" content="梓川从不吃糖">
-<meta property="og:url" content="http://zicuan123.github.io/categories/git/index.html">
+    <meta name="description" content="filter()方法">
+<meta property="og:type" content="article">
+<meta property="og:title" content="filter筛选数组">
+<meta property="og:url" content="http://zicuan123.github.io/2022/08/22/JS%E8%BF%9B%E9%98%B6/filter%E7%AD%9B%E9%80%89%E6%95%B0%E7%BB%84/index.html">
 <meta property="og:site_name" content="梓川从不吃糖">
+<meta property="og:description" content="filter()方法">
 <meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2022-08-22T10:10:19.000Z">
+<meta property="article:modified_time" content="2022-08-22T10:19:07.833Z">
 <meta property="article:author" content="梓川">
+<meta property="article:tag" content="JS进阶">
 <meta name="twitter:card" content="summary">
 
 
-<link rel="canonical" href="http://zicuan123.github.io/categories/git/">
+<link rel="canonical" href="http://zicuan123.github.io/2022/08/22/JS%E8%BF%9B%E9%98%B6/filter%E7%AD%9B%E9%80%89%E6%95%B0%E7%BB%84/">
 
 
 
-<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":false,"lang":"zh-CN","comments":"","permalink":"","path":"categories/git/index.html","title":""}</script>
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"http://zicuan123.github.io/2022/08/22/JS%E8%BF%9B%E9%98%B6/filter%E7%AD%9B%E9%80%89%E6%95%B0%E7%BB%84/","path":"2022/08/22/JS进阶/filter筛选数组/","title":"filter筛选数组"}</script>
 
 <script class="next-config" data-name="calendar" type="application/json">""</script>
-<title>分类: git | 梓川从不吃糖</title>
+<title>filter筛选数组 | 梓川从不吃糖</title>
   
 
 
@@ -133,7 +138,7 @@
 
   <aside class="sidebar">
 
-    <div class="sidebar-inner sidebar-overview-active">
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
       <ul class="sidebar-nav">
         <li class="sidebar-nav-toc">
           文章目录
@@ -146,6 +151,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#filter-%E6%96%B9%E6%B3%95"><span class="nav-number">1.</span> <span class="nav-text">filter()方法</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%B8%BB%E8%A6%81%E4%BD%BF%E7%94%A8%E5%9C%BA%E6%99%AF"><span class="nav-number">1.1.</span> <span class="nav-text">主要使用场景</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%AE%AD%E5%A4%B4%E5%87%BD%E6%95%B0%E5%86%99%E6%B3%95"><span class="nav-number">1.2.</span> <span class="nav-text">箭头函数写法</span></a></li></ol></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -211,50 +217,165 @@
 </noscript>
 
 
-    <div class="main-inner category posts-collapse">
+    <div class="main-inner post posts-expand">
 
 
   
+
+
+<div class="post-block">
   
   
-  <div class="post-block">
-    <div class="post-content">
-      <div class="collection-title">
-        <h1 class="collection-header">git
-          <small>分类</small>
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://zicuan123.github.io/2022/08/22/JS%E8%BF%9B%E9%98%B6/filter%E7%AD%9B%E9%80%89%E6%95%B0%E7%BB%84/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/head.jpeg">
+      <meta itemprop="name" content="梓川">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="梓川从不吃糖">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="filter筛选数组 | 梓川从不吃糖">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          filter筛选数组
         </h1>
-      </div>
 
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
       
-    <div class="collection-year">
-      <span class="collection-header">2022</span>
+
+      <time title="创建时间：2022-08-22 18:10:19 / 修改时间：18:19:07" itemprop="dateCreated datePublished" datetime="2022-08-22T18:10:19+08:00">2022-08-22</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/JS%E8%BF%9B%E9%98%B6/" itemprop="url" rel="index"><span itemprop="name">JS进阶</span></a>
+        </span>
+    </span>
+
+  
+    <span class="post-meta-item" title="本文字数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">本文字数：</span>
+      <span>143</span>
+    </span>
+    <span class="post-meta-item" title="阅读时长">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">阅读时长 &asymp;</span>
+      <span>1 分钟</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <h3 id="filter-方法"><a href="#filter-方法" class="headerlink" title="filter()方法"></a>filter()方法</h3><span id="more"></span>
+
+<p>filter() 筛选数组 ,创建一个新的数组，新数组中的元素是通过检查指定数组中符合条件的所有元素</p>
+<h4 id="主要使用场景"><a href="#主要使用场景" class="headerlink" title="主要使用场景"></a>主要使用场景</h4><p>筛选数组&#x3D;&#x3D;符合条件&#x3D;&#x3D;的元素，并返回&#x3D;&#x3D;筛选之后&#x3D;&#x3D;元素的新数组</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> arr = [<span class="number">10</span>, <span class="number">15</span>, <span class="number">20</span>, <span class="number">30</span>, <span class="number">40</span>]</span><br><span class="line"><span class="keyword">const</span> newArr = arr.<span class="title function_">filter</span>(<span class="keyword">function</span> (<span class="params">item, index</span>) &#123;</span><br><span class="line">   <span class="comment">// filter方法里只能写比较运算符，不能写+ - 运算符</span></span><br><span class="line">   <span class="keyword">return</span> item &gt;= <span class="number">20</span></span><br><span class="line">&#125;)</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(newArr);<span class="comment">// [20, 30, 40]</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="箭头函数写法"><a href="#箭头函数写法" class="headerlink" title="箭头函数写法"></a>箭头函数写法</h4><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> newArr = arr.<span class="title function_">filter</span>(<span class="function"><span class="params">item</span> =&gt;</span> item &gt;= <span class="number">20</span>)</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(newArr);<span class="comment">// [20, 30, 40]</span></span><br></pre></td></tr></table></figure>
+
+
     </div>
 
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-      <div class="post-meta-container">
-        <time itemprop="dateCreated"
-              datetime="2022-08-20T21:06:05+08:00"
-              content="2022-08-20">
-          08-20
-        </time>
+    
+    
+    
+    <div>
+  
+    <div>
+    
+        <div style="text-align:center;color: #ccc;font-size:14px;">-------------本文结束<i class="fa fa-paw"></i>感谢您的阅读-------------</div>
+    
+</div>
+  
+</div>
+    <footer class="post-footer">
+          <div class="reward-container">
+  <div>您的支持是我坚持下去最大的动力</div>
+  <button>
+    赞赏
+  </button>
+  <div class="post-reward">
+      <div>
+        <img src="/images/wechatpay.png" alt="梓川 微信">
+        <span>微信</span>
+      </div>
+      <div>
+        <img src="/images/alipay.png" alt="梓川 支付宝">
+        <span>支付宝</span>
       </div>
 
-      <div class="post-title">
-          <a class="post-title-link" href="/2022/08/20/git%E5%91%BD%E4%BB%A4/" itemprop="url">
-            <span itemprop="name">git命令</span>
-          </a>
-      </div>
-
-      
-    </header>
-  </article>
-
-    </div>
   </div>
-  
-  
-  
+</div>
+
+          
+
+<div class="post-copyright">
+<ul>
+  <li class="post-copyright-author">
+      <strong>本文作者： </strong>梓川
+  </li>
+  <li class="post-copyright-link">
+      <strong>本文链接：</strong>
+      <a href="http://zicuan123.github.io/2022/08/22/JS%E8%BF%9B%E9%98%B6/filter%E7%AD%9B%E9%80%89%E6%95%B0%E7%BB%84/" title="filter筛选数组">http://zicuan123.github.io/2022/08/22/JS进阶/filter筛选数组/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+</div>
+
+          <div class="post-tags">
+              <a href="/tags/JS%E8%BF%9B%E9%98%B6/" rel="tag"># JS进阶</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2022/08/22/JS%E8%BF%9B%E9%98%B6/forEach%E6%96%B9%E6%B3%95/" rel="prev" title="forEach方法">
+                  <i class="fa fa-chevron-left"></i> forEach方法
+                </a>
+            </div>
+            <div class="post-nav-item">
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
 
 </div>
   </main>
