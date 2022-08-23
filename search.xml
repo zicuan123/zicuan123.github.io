@@ -77,6 +77,201 @@
       </tags>
   </entry>
   <entry>
+    <title>git命令</title>
+    <url>/2022/08/20/git%E5%91%BD%E4%BB%A4/</url>
+    <content><![CDATA[<h1 id="Git-命令"><a href="#Git-命令" class="headerlink" title="Git 命令"></a>Git 命令</h1><span id="more"></span>
+
+<ol>
+<li>git config –global user.name “” ：设置用户名，用户名为字符串</li>
+<li>git config –global user.email””:设置邮箱</li>
+<li>git config –list –global：查看所有的全局配置项</li>
+<li>查看指定的全局配置项：</li>
+<li>git config user.name：查看用户名</li>
+<li>git config user.email:查看邮箱</li>
+<li>可以使用 git help &lt;&gt;命令，无需联网即可在浏览器中打开帮助手册，如 git help config</li>
+<li>git config -h 可直接在终端查看 config 手册</li>
+<li>clear 命令可快速清空终端</li>
+</ol>
+<h2 id="二-在现有的目录中初始化仓库"><a href="#二-在现有的目录中初始化仓库" class="headerlink" title="二.在现有的目录中初始化仓库"></a>二.在现有的目录中初始化仓库</h2><p>1.在项目目录中，通过鼠标右键打开“git bash”</p>
+<p>2.执行 git init 命令将当前的目录转化为 git 仓库</p>
+<p>git 命令会创建一个名为.git 的隐藏文件夹，这个.git 目录就是&#x3D;&#x3D;当前项目的 git 仓库&#x3D;&#x3D;，里面包含了初始的必要文件，这些文件是&#x3D;&#x3D;git 的必要组成部分&#x3D;&#x3D;</p>
+<h2 id="三-检查文件的状态"><a href="#三-检查文件的状态" class="headerlink" title="三.检查文件的状态"></a>三.检查文件的状态</h2><p>1.使用 git status 命令查看文件处于什么状态</p>
+<p>2.使用 git status -s 以精简的方式显示文件状态，文件名前显示&#x3D;&#x3D;？？&#x3D;&#x3D;即该文件未被跟踪，前显示绿色的&#x3D;&#x3D;A&#x3D;&#x3D;即为新添加到暂存区的文件</p>
+<h2 id="四-跟踪新文件"><a href="#四-跟踪新文件" class="headerlink" title="四.跟踪新文件"></a>四.跟踪新文件</h2><p>使用命令 git add 文件名即可将该文件跟踪并添加到暂存区</p>
+<h2 id="五-提交更新"><a href="#五-提交更新" class="headerlink" title="五.提交更新"></a>五.提交更新</h2><p>暂存区中有一个文件等待被提交到 git 仓库进行保存，可以执行 git commit 命令进行提交，其中-m 选项后为本次的提交消息，用来对提交的内容进一步描述。如 git commit -m“新建了 index。html 文件”。</p>
+<p>提交成功后，再次检查文件状态 git status，得到 nothing to commit，working tree clean 提示，说明所有文件都处于未修改状态，没有文件需要提交。</p>
+<h2 id="六-对已提交文件进行修改"><a href="#六-对已提交文件进行修改" class="headerlink" title="六.对已提交文件进行修改"></a>六.对已提交文件进行修改</h2><p>对已提交文件进行了修改，使用 git status -s 查询会得到一个红色的&#x3D;&#x3D;M&#x3D;&#x3D;，说明其已被修改且并未放到暂存区中</p>
+<h2 id="七-暂存已修改的文件"><a href="#七-暂存已修改的文件" class="headerlink" title="七.暂存已修改的文件"></a>七.暂存已修改的文件</h2><p>如果要暂存已修改的文件，需要再次运行 git add 命令，主要有 3 个功效：</p>
+<p>1.可以用它开始跟踪新文件</p>
+<p>2.把已跟踪的、且已修改的文件放到暂存区</p>
+<p>3.把有冲突的文件标记为已解决状态</p>
+<p>暂存已修改文件之后再次使用 git status -s 命令查询，会得到绿色的&#x3D;&#x3D;M&#x3D;&#x3D;，表示文件已修改且已放入暂存区</p>
+<h2 id="八-提交已暂存的文件"><a href="#八-提交已暂存的文件" class="headerlink" title="八.提交已暂存的文件"></a>八.提交已暂存的文件</h2><p>再次运行 git commit -m”提交消息”命令，即可将暂存区中记录的文件的快照，提交到 git 仓库进行保存</p>
+<h2 id="九-撤销对文件的修改"><a href="#九-撤销对文件的修改" class="headerlink" title="九.撤销对文件的修改"></a>九.撤销对文件的修改</h2><p>把对工作区中对应文件的修改，还原成 git 仓库所保存的版本。</p>
+<p>操作的结果：所有的修改会丢失，且无法恢复！危险性比较高！命令为 git checkout –文件名</p>
+<h2 id="十-向暂存区中一次性添加多个文件"><a href="#十-向暂存区中一次性添加多个文件" class="headerlink" title="十.向暂存区中一次性添加多个文件"></a>十.向暂存区中一次性添加多个文件</h2><p>&#x3D;&#x3D;git add .&#x3D;&#x3D;即可一次性把所有文件添加到暂存区</p>
+<h2 id="十一-取消暂存的文件"><a href="#十一-取消暂存的文件" class="headerlink" title="十一.取消暂存的文件"></a>十一.取消暂存的文件</h2><p>如果需要从暂存区中移除对应的文件，可以使用如下命令：</p>
+<p>git reset HEAD 要移除的文件名称</p>
+<p>git reset HEAD . 可将所有文件移除</p>
+<h2 id="十二-跳过使用暂存区域"><a href="#十二-跳过使用暂存区域" class="headerlink" title="十二.跳过使用暂存区域"></a>十二.跳过使用暂存区域</h2><p>在提交的时候，给 git commit 加上-a，git 就会自动把所有已跟踪文件提交到暂存区，并保存到 git 仓库。具体命令如下：</p>
+<p>git commit -a -m “描述消息”</p>
+<h2 id="十三-移除文件"><a href="#十三-移除文件" class="headerlink" title="十三.移除文件"></a>十三.移除文件</h2><p>从 git 仓库中移除文件有两种方式：</p>
+<p>1.从 git 仓库和工作区中同时移除对应文件：git rm -f 文件名</p>
+<p>2.只从 git 仓库中移除对应文件：git rm –cached 文件名</p>
+<h2 id="十四-忽略文件"><a href="#十四-忽略文件" class="headerlink" title="十四.忽略文件"></a>十四.忽略文件</h2><p>有些文件无需纳入 git 的管理，也不希望它们总出现在为跟踪文件列表。可以创建一个名为.gitignore 的配置文件，列出要忽略的文件的匹配模式。</p>
+<p>文件.gitignore 的格式规范如下：</p>
+<p>1.以#开头的是注释</p>
+<p>2.以&#x2F;结尾的是目录</p>
+<p>3.以&#x2F;开头防止递归</p>
+<p>4.以！开头表示取反</p>
+<p>5.可以使用 glob 模式进行文件和文件夹的匹配（glob 指简化了的正则表达式）</p>
+<h3 id="glob-模式"><a href="#glob-模式" class="headerlink" title="glob 模式"></a>glob 模式</h3><p>1.星号*匹配零个或多个任意字符</p>
+<p>2.[abc]匹配任何一个列在方括号中的字符（匹配一个 a 或匹配一个 b 或匹配一个 c）</p>
+<p>3.问号？只匹配一个任意字符</p>
+<p>4.在方括号中使用短划线分隔两个字符，表示所有在这两个字符范围内的都可以匹配（比如[0-9]表示匹配所有 0 到 9 的数字）</p>
+<p>5.两个星号&#x3D;&#x3D;<strong>&#x3D;&#x3D;表示匹配任意中间目录(比如 a&#x2F;</strong>&#x2F;z 可以匹配 a&#x2F;z，a&#x2F;b&#x2F;z 或 a&#x2F;b&#x2F;c&#x2F;z 等等)</p>
+<p><img src="/2022/08/20/git%E5%91%BD%E4%BB%A4/img1.png"></p>
+<p><img src="/2022/08/20/git%E5%91%BD%E4%BB%A4/img2.png" alt="image-20220227132638537"></p>
+<h2 id="十五-查看提交历史"><a href="#十五-查看提交历史" class="headerlink" title="十五.查看提交历史"></a>十五.查看提交历史</h2><p>回顾项目的提交历史：git log</p>
+<p>按 q 退出提交历史查看</p>
+<p>git log -数字 查看最近的几条条提交历史</p>
+<p>git log -数字 –pretty&#x3D;oneline 在一行显示提交历史</p>
+<p>自定义输出格式：</p>
+<p>git log -2 –pretty&#x3D;format：”%h|%an|%ar|%s”</p>
+<p>|为自己设置的分隔符，%h 为唯一标识，%an 作者名字，%ar 提交时间，%s 提交说明</p>
+<h2 id="十六-回退到指定的版本"><a href="#十六-回退到指定的版本" class="headerlink" title="十六.回退到指定的版本"></a>十六.回退到指定的版本</h2><p><img src="/2022/08/20/git%E5%91%BD%E4%BB%A4/img3.png" alt="image-20220227133536101"></p>
+]]></content>
+      <categories>
+        <category>git</category>
+      </categories>
+      <tags>
+        <tag>git</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>MarkDown快速入门(Typora)</title>
+    <url>/2022/08/12/markdown/</url>
+    <content><![CDATA[<h2 id="markdown-简介"><a href="#markdown-简介" class="headerlink" title="markdown 简介"></a>markdown 简介</h2><p>Markdown 是一种轻量级标记语言，它允许人们使用易读易写的纯文本格式编写文档<span id="more"></span>，然后转换成格式丰富的 HTML 页面。这几年 Markdown 编辑器以其独到的优势迅速火起来了，很多写作平台都开始支持了。<br>Markdown 语法常用的也就十个左右，Markdown 编辑器深受技术人员和效率写手的喜爱，很多 Markdown 编辑器还可以轻松地将文本转换为 pdf 等格式。</p>
+<h2 id="标题"><a href="#标题" class="headerlink" title="标题"></a>标题</h2><p>#+空格，1个#号表示1级标题，6个#表示6级标题，#号越多字体越小。</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"># 标题1</span><br><span class="line">## 标题2</span><br><span class="line">### 标题3</span><br><span class="line">#### 标题4</span><br><span class="line">##### 标题5</span><br><span class="line">###### 标题6</span><br></pre></td></tr></table></figure>
+
+<h2 id="字体"><a href="#字体" class="headerlink" title="字体"></a>字体</h2><figure class="highlight html"><table><tr><td class="code"><pre><span class="line">**粗体文字两边各两个星号**</span><br><span class="line">*斜体是每边一个星号*</span><br><span class="line">~~删除线是每边两个波浪线~~</span><br><span class="line">==高亮字体是两边各两个等号==</span><br></pre></td></tr></table></figure>
+
+<p><strong>粗体</strong></p>
+<p><em>斜体</em></p>
+<p><del>删除线</del></p>
+<p>&#x3D;&#x3D;高亮&#x3D;&#x3D;</p>
+<h2 id="代码块"><a href="#代码块" class="headerlink" title="代码块"></a>代码块</h2><p>英文符号的 &#96;&#96;&#96;加输入你要写的代码语言</p>
+<p>例如&#96;&#96;&#96;javascript 就会生成一个书写javascript语言的代码块</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">function</span>(<span class="params">min,max</span>)&#123;</span><br><span class="line">	<span class="keyword">return</span> <span class="title class_">Math</span>.<span class="title function_">floor</span>(<span class="title class_">Math</span>.<span class="title function_">random</span>()*(max-min+<span class="number">1</span>)+min)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="引用"><a href="#引用" class="headerlink" title="引用"></a>引用</h2><figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="comment">//引用语法 有层级</span></span><br><span class="line">&gt;作者：梓川</span><br><span class="line">&gt;&gt;作者：梓川</span><br><span class="line">&gt;&gt;&gt;作者：梓川</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>作者：梓川</p>
+<blockquote>
+<p>作者：梓川</p>
+<blockquote>
+<p>作者：梓川</p>
+</blockquote>
+</blockquote>
+</blockquote>
+<h2 id="分割线"><a href="#分割线" class="headerlink" title="分割线"></a>分割线</h2><figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="comment">//分割线1</span></span><br><span class="line">---</span><br><span class="line"><span class="comment">//分割线2</span></span><br><span class="line">***</span><br></pre></td></tr></table></figure>
+
+<p>&#x2F;&#x2F;分割线1</p>
+<hr>
+<p>&#x2F;&#x2F;分割线2</p>
+<hr>
+<h2 id="插入图片"><a href="#插入图片" class="headerlink" title="插入图片"></a>插入图片</h2><figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="comment">//在线图片和本地图片插入格式一致，只是路径不同</span></span><br><span class="line"><span class="comment">//在线图片只需要把路径换成链接就好</span></span><br><span class="line">![我的图片](images/my.<span class="property">jpg</span>)</span><br></pre></td></tr></table></figure>
+
+<p><img src="/images/head.jpeg" alt="我的图片"></p>
+<h2 id="超链接"><a href="#超链接" class="headerlink" title="超链接"></a>超链接</h2><figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="comment">//超链接语法</span></span><br><span class="line">[我的github](<span class="attr">https</span>:<span class="comment">//github.com/zicuan123)</span></span><br><span class="line"><span class="comment">//注意在Typora软件中点击是不能跳转的，如果写到博客里就可以跳转了</span></span><br></pre></td></tr></table></figure>
+
+<p><a href="https://github.com/zicuan123">我的github</a></p>
+<h2 id="列表"><a href="#列表" class="headerlink" title="列表"></a>列表</h2><figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="comment">//无序列表 -加空格 写好一个无序列表后直接回车，后续也是无序列表</span></span><br><span class="line">- 无序列表<span class="number">1</span></span><br><span class="line">- 无序列表<span class="number">2</span></span><br><span class="line">- 无序列表<span class="number">3</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//有序列表 1+.+空格+文字 写好一个后回车也能生成无序列表</span></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>无序列表1</li>
+<li>无序列表2</li>
+<li>无序列表3</li>
+</ul>
+<ol>
+<li>有序列表</li>
+<li>有序列表</li>
+<li>有序列表</li>
+</ol>
+<h2 id="表格"><a href="#表格" class="headerlink" title="表格"></a>表格</h2><p>鼠标右键点击插入，选择表格，再选择几行几列自动生成表格了</p>
+<table>
+<thead>
+<tr>
+<th>姓名</th>
+<th>语文</th>
+<th>数学</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>张三</td>
+<td>18</td>
+<td>99</td>
+</tr>
+<tr>
+<td>李四</td>
+<td>82</td>
+<td>14</td>
+</tr>
+<tr>
+<td>王五</td>
+<td>99</td>
+<td>99</td>
+</tr>
+</tbody></table>
+]]></content>
+      <categories>
+        <category>MarkDown</category>
+      </categories>
+      <tags>
+        <tag>markdown</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>终端中命令</title>
+    <url>/2022/08/20/%E7%BB%88%E7%AB%AF%E5%91%BD%E4%BB%A4/</url>
+    <content><![CDATA[<h3 id="1-终端中的快捷键"><a href="#1-终端中的快捷键" class="headerlink" title="1.终端中的快捷键"></a>1.终端中的快捷键</h3><span id="more"></span>
+
+<h5 id="在-Windows-的-powershell-或-cmd-终端中，我们可以通过如下快捷键，来提高终端的操作效率："><a href="#在-Windows-的-powershell-或-cmd-终端中，我们可以通过如下快捷键，来提高终端的操作效率：" class="headerlink" title="在 Windows 的 powershell 或 cmd 终端中，我们可以通过如下快捷键，来提高终端的操作效率："></a>在 Windows 的 powershell 或 cmd 终端中，我们可以通过如下快捷键，来提高终端的操作效率：</h5><p>① 使用 ↑ 键，可以快速定位到上一次执行的命令</p>
+<p>② 使用 tab 键，能够快速补全路径</p>
+<p>③ 使用 esc 键，能够快速清空当前已输入的命令</p>
+<p>④ 输入 cls 命令，可以清空终端</p>
+<h3 id="2-webpack-命令"><a href="#2-webpack-命令" class="headerlink" title="2.webpack 命令"></a>2.webpack 命令</h3><p>1.npm init –y：初始化包管理配置文件 package.json</p>
+<p>2.npm install jquery –S：安装 jQuery</p>
+<p>-S 是 –save 的简写，在开发和部署上线都会用到的安装到-S</p>
+<p>3.在终端运行如下的命令，安装 webpack 相关的两个包：</p>
+<p>npm install <a href="mailto:&#119;&#x65;&#x62;&#x70;&#97;&#x63;&#107;&#x40;&#x35;&#46;&#x34;&#x32;&#x2e;&#x31;">&#119;&#x65;&#x62;&#x70;&#97;&#x63;&#107;&#x40;&#x35;&#46;&#x34;&#x32;&#x2e;&#x31;</a> <a href="mailto:&#119;&#101;&#98;&#112;&#x61;&#99;&#107;&#x2d;&#99;&#108;&#105;&#x40;&#52;&#46;&#55;&#46;&#x32;">&#119;&#101;&#98;&#112;&#x61;&#99;&#107;&#x2d;&#99;&#108;&#105;&#x40;&#52;&#46;&#55;&#46;&#x32;</a> -D</p>
+<p>-D 是–save-dev 的简写，只在开发阶段用到的安装到-D</p>
+<p>去 npmjs.com 网站查看规范手册</p>
+<p>4.script 节点下的脚本，用 npm run ‘’脚本名‘’ 命令，执行</p>
+<p>5.安装 webpack-dev-server：npm install <a href="mailto:&#x77;&#101;&#x62;&#x70;&#97;&#x63;&#x6b;&#45;&#x64;&#x65;&#x76;&#x2d;&#115;&#x65;&#114;&#118;&#x65;&#114;&#64;&#x33;&#46;&#49;&#49;&#46;&#50;">&#x77;&#101;&#x62;&#x70;&#97;&#x63;&#x6b;&#45;&#x64;&#x65;&#x76;&#x2d;&#115;&#x65;&#114;&#118;&#x65;&#114;&#64;&#x33;&#46;&#49;&#49;&#46;&#50;</a> -D</p>
+<p>webpack-dev-server 可以让 webpack 监听项目源代码的变化，从而进行自动打包构建。</p>
+<p>再次运行 npm run dev 命令，重新进行项目的打包</p>
+<p>在浏览器中访问 <a href="http://localhost:8080/">http://localhost:8080</a> 地址，查看自动打包效果</p>
+<p>ctrl c 两次，停止终端运行</p>
+<p>6.html-webpack-plugin 是 webpack 中的 HTML 插件，可以通过此插件自定制 index.html 页面的内容。</p>
+<p>运行如下的命令，即可在项目中安装此插件：</p>
+<p>npm install <a href="mailto:&#x68;&#x74;&#109;&#108;&#45;&#x77;&#101;&#98;&#112;&#97;&#99;&#107;&#x2d;&#112;&#108;&#x75;&#103;&#x69;&#110;&#x40;&#53;&#x2e;&#51;&#46;&#50;">&#x68;&#x74;&#109;&#108;&#45;&#x77;&#101;&#98;&#112;&#97;&#99;&#107;&#x2d;&#112;&#108;&#x75;&#103;&#x69;&#110;&#x40;&#53;&#x2e;&#51;&#46;&#50;</a> -D</p>
+<h3 id="3-vue-cli"><a href="#3-vue-cli" class="headerlink" title="3.vue-cli"></a>3.vue-cli</h3><p>vue-cli 是 Vue.js 开发的标准工具。它简化了程序员基于 webpack 创建工程化的 Vue 项目的过程。</p>
+<p>vue-cli 是 npm 上的一个全局包，使用 npm install 命令，即可方便的把它安装到自己的电脑上:</p>
+<p>npm install -g @vue&#x2F;cli</p>
+<p>基于 vue-cli 快速生成工程化的 Vue 项目：</p>
+<p>vue create 项目的名称</p>
+]]></content>
+      <categories>
+        <category>终端命令</category>
+      </categories>
+      <tags>
+        <tag>终端命令</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Hexo Next主题的使用与美化</title>
     <url>/2022/08/13/Next/</url>
     <content><![CDATA[<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><ul>
@@ -251,198 +446,20 @@
       </tags>
   </entry>
   <entry>
-    <title>git命令</title>
-    <url>/2022/08/20/git%E5%91%BD%E4%BB%A4/</url>
-    <content><![CDATA[<h1 id="Git-命令"><a href="#Git-命令" class="headerlink" title="Git 命令"></a>Git 命令</h1><span id="more"></span>
+    <title>CSS文本超出隐藏</title>
+    <url>/2022/08/17/HTML-CSS/%E6%96%87%E6%9C%AC%E8%B6%85%E5%87%BA%E9%9A%90%E8%97%8F/</url>
+    <content><![CDATA[<h2 id="单行文本超出隐藏"><a href="#单行文本超出隐藏" class="headerlink" title="单行文本超出隐藏"></a>单行文本超出隐藏</h2><span id="more"></span>
 
-<ol>
-<li>git config –global user.name “” ：设置用户名，用户名为字符串</li>
-<li>git config –global user.email””:设置邮箱</li>
-<li>git config –list –global：查看所有的全局配置项</li>
-<li>查看指定的全局配置项：</li>
-<li>git config user.name：查看用户名</li>
-<li>git config user.email:查看邮箱</li>
-<li>可以使用 git help &lt;&gt;命令，无需联网即可在浏览器中打开帮助手册，如 git help config</li>
-<li>git config -h 可直接在终端查看 config 手册</li>
-<li>clear 命令可快速清空终端</li>
-</ol>
-<h2 id="二-在现有的目录中初始化仓库"><a href="#二-在现有的目录中初始化仓库" class="headerlink" title="二.在现有的目录中初始化仓库"></a>二.在现有的目录中初始化仓库</h2><p>1.在项目目录中，通过鼠标右键打开“git bash”</p>
-<p>2.执行 git init 命令将当前的目录转化为 git 仓库</p>
-<p>git 命令会创建一个名为.git 的隐藏文件夹，这个.git 目录就是&#x3D;&#x3D;当前项目的 git 仓库&#x3D;&#x3D;，里面包含了初始的必要文件，这些文件是&#x3D;&#x3D;git 的必要组成部分&#x3D;&#x3D;</p>
-<h2 id="三-检查文件的状态"><a href="#三-检查文件的状态" class="headerlink" title="三.检查文件的状态"></a>三.检查文件的状态</h2><p>1.使用 git status 命令查看文件处于什么状态</p>
-<p>2.使用 git status -s 以精简的方式显示文件状态，文件名前显示&#x3D;&#x3D;？？&#x3D;&#x3D;即该文件未被跟踪，前显示绿色的&#x3D;&#x3D;A&#x3D;&#x3D;即为新添加到暂存区的文件</p>
-<h2 id="四-跟踪新文件"><a href="#四-跟踪新文件" class="headerlink" title="四.跟踪新文件"></a>四.跟踪新文件</h2><p>使用命令 git add 文件名即可将该文件跟踪并添加到暂存区</p>
-<h2 id="五-提交更新"><a href="#五-提交更新" class="headerlink" title="五.提交更新"></a>五.提交更新</h2><p>暂存区中有一个文件等待被提交到 git 仓库进行保存，可以执行 git commit 命令进行提交，其中-m 选项后为本次的提交消息，用来对提交的内容进一步描述。如 git commit -m“新建了 index。html 文件”。</p>
-<p>提交成功后，再次检查文件状态 git status，得到 nothing to commit，working tree clean 提示，说明所有文件都处于未修改状态，没有文件需要提交。</p>
-<h2 id="六-对已提交文件进行修改"><a href="#六-对已提交文件进行修改" class="headerlink" title="六.对已提交文件进行修改"></a>六.对已提交文件进行修改</h2><p>对已提交文件进行了修改，使用 git status -s 查询会得到一个红色的&#x3D;&#x3D;M&#x3D;&#x3D;，说明其已被修改且并未放到暂存区中</p>
-<h2 id="七-暂存已修改的文件"><a href="#七-暂存已修改的文件" class="headerlink" title="七.暂存已修改的文件"></a>七.暂存已修改的文件</h2><p>如果要暂存已修改的文件，需要再次运行 git add 命令，主要有 3 个功效：</p>
-<p>1.可以用它开始跟踪新文件</p>
-<p>2.把已跟踪的、且已修改的文件放到暂存区</p>
-<p>3.把有冲突的文件标记为已解决状态</p>
-<p>暂存已修改文件之后再次使用 git status -s 命令查询，会得到绿色的&#x3D;&#x3D;M&#x3D;&#x3D;，表示文件已修改且已放入暂存区</p>
-<h2 id="八-提交已暂存的文件"><a href="#八-提交已暂存的文件" class="headerlink" title="八.提交已暂存的文件"></a>八.提交已暂存的文件</h2><p>再次运行 git commit -m”提交消息”命令，即可将暂存区中记录的文件的快照，提交到 git 仓库进行保存</p>
-<h2 id="九-撤销对文件的修改"><a href="#九-撤销对文件的修改" class="headerlink" title="九.撤销对文件的修改"></a>九.撤销对文件的修改</h2><p>把对工作区中对应文件的修改，还原成 git 仓库所保存的版本。</p>
-<p>操作的结果：所有的修改会丢失，且无法恢复！危险性比较高！命令为 git checkout –文件名</p>
-<h2 id="十-向暂存区中一次性添加多个文件"><a href="#十-向暂存区中一次性添加多个文件" class="headerlink" title="十.向暂存区中一次性添加多个文件"></a>十.向暂存区中一次性添加多个文件</h2><p>&#x3D;&#x3D;git add .&#x3D;&#x3D;即可一次性把所有文件添加到暂存区</p>
-<h2 id="十一-取消暂存的文件"><a href="#十一-取消暂存的文件" class="headerlink" title="十一.取消暂存的文件"></a>十一.取消暂存的文件</h2><p>如果需要从暂存区中移除对应的文件，可以使用如下命令：</p>
-<p>git reset HEAD 要移除的文件名称</p>
-<p>git reset HEAD . 可将所有文件移除</p>
-<h2 id="十二-跳过使用暂存区域"><a href="#十二-跳过使用暂存区域" class="headerlink" title="十二.跳过使用暂存区域"></a>十二.跳过使用暂存区域</h2><p>在提交的时候，给 git commit 加上-a，git 就会自动把所有已跟踪文件提交到暂存区，并保存到 git 仓库。具体命令如下：</p>
-<p>git commit -a -m “描述消息”</p>
-<h2 id="十三-移除文件"><a href="#十三-移除文件" class="headerlink" title="十三.移除文件"></a>十三.移除文件</h2><p>从 git 仓库中移除文件有两种方式：</p>
-<p>1.从 git 仓库和工作区中同时移除对应文件：git rm -f 文件名</p>
-<p>2.只从 git 仓库中移除对应文件：git rm –cached 文件名</p>
-<h2 id="十四-忽略文件"><a href="#十四-忽略文件" class="headerlink" title="十四.忽略文件"></a>十四.忽略文件</h2><p>有些文件无需纳入 git 的管理，也不希望它们总出现在为跟踪文件列表。可以创建一个名为.gitignore 的配置文件，列出要忽略的文件的匹配模式。</p>
-<p>文件.gitignore 的格式规范如下：</p>
-<p>1.以#开头的是注释</p>
-<p>2.以&#x2F;结尾的是目录</p>
-<p>3.以&#x2F;开头防止递归</p>
-<p>4.以！开头表示取反</p>
-<p>5.可以使用 glob 模式进行文件和文件夹的匹配（glob 指简化了的正则表达式）</p>
-<h3 id="glob-模式"><a href="#glob-模式" class="headerlink" title="glob 模式"></a>glob 模式</h3><p>1.星号*匹配零个或多个任意字符</p>
-<p>2.[abc]匹配任何一个列在方括号中的字符（匹配一个 a 或匹配一个 b 或匹配一个 c）</p>
-<p>3.问号？只匹配一个任意字符</p>
-<p>4.在方括号中使用短划线分隔两个字符，表示所有在这两个字符范围内的都可以匹配（比如[0-9]表示匹配所有 0 到 9 的数字）</p>
-<p>5.两个星号&#x3D;&#x3D;<strong>&#x3D;&#x3D;表示匹配任意中间目录(比如 a&#x2F;</strong>&#x2F;z 可以匹配 a&#x2F;z，a&#x2F;b&#x2F;z 或 a&#x2F;b&#x2F;c&#x2F;z 等等)</p>
-<p><img src="/2022/08/20/git%E5%91%BD%E4%BB%A4/img1.png"></p>
-<p><img src="/2022/08/20/git%E5%91%BD%E4%BB%A4/img2.png" alt="image-20220227132638537"></p>
-<h2 id="十五-查看提交历史"><a href="#十五-查看提交历史" class="headerlink" title="十五.查看提交历史"></a>十五.查看提交历史</h2><p>回顾项目的提交历史：git log</p>
-<p>按 q 退出提交历史查看</p>
-<p>git log -数字 查看最近的几条条提交历史</p>
-<p>git log -数字 –pretty&#x3D;oneline 在一行显示提交历史</p>
-<p>自定义输出格式：</p>
-<p>git log -2 –pretty&#x3D;format：”%h|%an|%ar|%s”</p>
-<p>|为自己设置的分隔符，%h 为唯一标识，%an 作者名字，%ar 提交时间，%s 提交说明</p>
-<h2 id="十六-回退到指定的版本"><a href="#十六-回退到指定的版本" class="headerlink" title="十六.回退到指定的版本"></a>十六.回退到指定的版本</h2><p><img src="/2022/08/20/git%E5%91%BD%E4%BB%A4/img3.png" alt="image-20220227133536101"></p>
+<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="selector-class">.box</span> &#123;</span><br><span class="line">  <span class="attribute">width</span>: <span class="number">150px</span>;</span><br><span class="line">  <span class="attribute">height</span>: <span class="number">150px</span>;</span><br><span class="line">  <span class="attribute">background-color</span>: pink;</span><br><span class="line">  <span class="attribute">font-size</span>: <span class="number">20px</span>;</span><br><span class="line">  <span class="attribute">margin</span>: <span class="number">100px</span> auto;</span><br><span class="line"></span><br><span class="line">  <span class="comment">/* 第一步:溢出隐藏 */</span></span><br><span class="line">  <span class="attribute">overflow</span>: hidden;</span><br><span class="line">  <span class="comment">/* 既然是单行文本,就不能换行 */</span></span><br><span class="line">  <span class="attribute">white-space</span>: nowrap;</span><br><span class="line">  <span class="comment">/* 文本溢出的部分,用省略号来代替 */</span></span><br><span class="line">  <span class="attribute">text-overflow</span>: ellipsis;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h5 id="注意点"><a href="#注意点" class="headerlink" title="注意点"></a>注意点</h5><p>长串英文字母和数字默认是一个单词，为了其完整性，默认并不会主动换行</p>
+<h2 id="多行文本超出隐藏"><a href="#多行文本超出隐藏" class="headerlink" title="多行文本超出隐藏"></a>多行文本超出隐藏</h2><figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="selector-class">.box</span> &#123;</span><br><span class="line">  <span class="attribute">width</span>: <span class="number">200px</span>;</span><br><span class="line">  <span class="attribute">height</span>: <span class="number">80px</span>;</span><br><span class="line">  <span class="attribute">background-color</span>: pink;</span><br><span class="line">  <span class="attribute">margin</span>: <span class="number">100px</span> auto;</span><br><span class="line">  <span class="attribute">font-size</span>: <span class="number">20px</span>;</span><br><span class="line"></span><br><span class="line">  <span class="comment">/* 目的:实现3行文本溢出用省略号显示 */</span></span><br><span class="line">  -webkit-line-clamp: <span class="number">3</span>;</span><br><span class="line">  <span class="attribute">display</span>: -webkit-box;</span><br><span class="line">  -webkit-box-orient: vertical;</span><br><span class="line">  <span class="attribute">overflow</span>: hidden;</span><br><span class="line">  <span class="attribute">text-overflow</span>: ellipsis;</span><br><span class="line"></span><br><span class="line">  <span class="comment">/* 单行文本需要考虑盒子的宽度,才能还原需求 */</span></span><br><span class="line">  <span class="comment">/* 多行文本需要考虑盒子的宽度和高度,才能还原需求 */</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 ]]></content>
       <categories>
-        <category>git</category>
+        <category>HTML</category>
       </categories>
       <tags>
-        <tag>git</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>MarkDown快速入门(Typora)</title>
-    <url>/2022/08/12/markdown/</url>
-    <content><![CDATA[<h2 id="markdown-简介"><a href="#markdown-简介" class="headerlink" title="markdown 简介"></a>markdown 简介</h2><p>Markdown 是一种轻量级标记语言，它允许人们使用易读易写的纯文本格式编写文档<span id="more"></span>，然后转换成格式丰富的 HTML 页面。这几年 Markdown 编辑器以其独到的优势迅速火起来了，很多写作平台都开始支持了。<br>Markdown 语法常用的也就十个左右，Markdown 编辑器深受技术人员和效率写手的喜爱，很多 Markdown 编辑器还可以轻松地将文本转换为 pdf 等格式。</p>
-<h2 id="标题"><a href="#标题" class="headerlink" title="标题"></a>标题</h2><p>#+空格，1个#号表示1级标题，6个#表示6级标题，#号越多字体越小。</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"># 标题1</span><br><span class="line">## 标题2</span><br><span class="line">### 标题3</span><br><span class="line">#### 标题4</span><br><span class="line">##### 标题5</span><br><span class="line">###### 标题6</span><br></pre></td></tr></table></figure>
-
-<h2 id="字体"><a href="#字体" class="headerlink" title="字体"></a>字体</h2><figure class="highlight html"><table><tr><td class="code"><pre><span class="line">**粗体文字两边各两个星号**</span><br><span class="line">*斜体是每边一个星号*</span><br><span class="line">~~删除线是每边两个波浪线~~</span><br><span class="line">==高亮字体是两边各两个等号==</span><br></pre></td></tr></table></figure>
-
-<p><strong>粗体</strong></p>
-<p><em>斜体</em></p>
-<p><del>删除线</del></p>
-<p>&#x3D;&#x3D;高亮&#x3D;&#x3D;</p>
-<h2 id="代码块"><a href="#代码块" class="headerlink" title="代码块"></a>代码块</h2><p>英文符号的 &#96;&#96;&#96;加输入你要写的代码语言</p>
-<p>例如&#96;&#96;&#96;javascript 就会生成一个书写javascript语言的代码块</p>
-<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">function</span>(<span class="params">min,max</span>)&#123;</span><br><span class="line">	<span class="keyword">return</span> <span class="title class_">Math</span>.<span class="title function_">floor</span>(<span class="title class_">Math</span>.<span class="title function_">random</span>()*(max-min+<span class="number">1</span>)+min)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h2 id="引用"><a href="#引用" class="headerlink" title="引用"></a>引用</h2><figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="comment">//引用语法 有层级</span></span><br><span class="line">&gt;作者：梓川</span><br><span class="line">&gt;&gt;作者：梓川</span><br><span class="line">&gt;&gt;&gt;作者：梓川</span><br></pre></td></tr></table></figure>
-
-<blockquote>
-<p>作者：梓川</p>
-<blockquote>
-<p>作者：梓川</p>
-<blockquote>
-<p>作者：梓川</p>
-</blockquote>
-</blockquote>
-</blockquote>
-<h2 id="分割线"><a href="#分割线" class="headerlink" title="分割线"></a>分割线</h2><figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="comment">//分割线1</span></span><br><span class="line">---</span><br><span class="line"><span class="comment">//分割线2</span></span><br><span class="line">***</span><br></pre></td></tr></table></figure>
-
-<p>&#x2F;&#x2F;分割线1</p>
-<hr>
-<p>&#x2F;&#x2F;分割线2</p>
-<hr>
-<h2 id="插入图片"><a href="#插入图片" class="headerlink" title="插入图片"></a>插入图片</h2><figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="comment">//在线图片和本地图片插入格式一致，只是路径不同</span></span><br><span class="line"><span class="comment">//在线图片只需要把路径换成链接就好</span></span><br><span class="line">![我的图片](images/my.<span class="property">jpg</span>)</span><br></pre></td></tr></table></figure>
-
-<p><img src="/images/head.jpeg" alt="我的图片"></p>
-<h2 id="超链接"><a href="#超链接" class="headerlink" title="超链接"></a>超链接</h2><figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="comment">//超链接语法</span></span><br><span class="line">[我的github](<span class="attr">https</span>:<span class="comment">//github.com/zicuan123)</span></span><br><span class="line"><span class="comment">//注意在Typora软件中点击是不能跳转的，如果写到博客里就可以跳转了</span></span><br></pre></td></tr></table></figure>
-
-<p><a href="https://github.com/zicuan123">我的github</a></p>
-<h2 id="列表"><a href="#列表" class="headerlink" title="列表"></a>列表</h2><figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="comment">//无序列表 -加空格 写好一个无序列表后直接回车，后续也是无序列表</span></span><br><span class="line">- 无序列表<span class="number">1</span></span><br><span class="line">- 无序列表<span class="number">2</span></span><br><span class="line">- 无序列表<span class="number">3</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//有序列表 1+.+空格+文字 写好一个后回车也能生成无序列表</span></span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>无序列表1</li>
-<li>无序列表2</li>
-<li>无序列表3</li>
-</ul>
-<ol>
-<li>有序列表</li>
-<li>有序列表</li>
-<li>有序列表</li>
-</ol>
-<h2 id="表格"><a href="#表格" class="headerlink" title="表格"></a>表格</h2><p>鼠标右键点击插入，选择表格，再选择几行几列自动生成表格了</p>
-<table>
-<thead>
-<tr>
-<th>姓名</th>
-<th>语文</th>
-<th>数学</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>张三</td>
-<td>18</td>
-<td>99</td>
-</tr>
-<tr>
-<td>李四</td>
-<td>82</td>
-<td>14</td>
-</tr>
-<tr>
-<td>王五</td>
-<td>99</td>
-<td>99</td>
-</tr>
-</tbody></table>
-]]></content>
-      <categories>
-        <category>MarkDown</category>
-      </categories>
-      <tags>
-        <tag>markdown</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>终端中命令</title>
-    <url>/2022/08/20/%E7%BB%88%E7%AB%AF%E5%91%BD%E4%BB%A4/</url>
-    <content><![CDATA[<h3 id="1-终端中的快捷键"><a href="#1-终端中的快捷键" class="headerlink" title="1.终端中的快捷键"></a>1.终端中的快捷键</h3><span id="more"></span>
-
-<h5 id="在-Windows-的-powershell-或-cmd-终端中，我们可以通过如下快捷键，来提高终端的操作效率："><a href="#在-Windows-的-powershell-或-cmd-终端中，我们可以通过如下快捷键，来提高终端的操作效率：" class="headerlink" title="在 Windows 的 powershell 或 cmd 终端中，我们可以通过如下快捷键，来提高终端的操作效率："></a>在 Windows 的 powershell 或 cmd 终端中，我们可以通过如下快捷键，来提高终端的操作效率：</h5><p>① 使用 ↑ 键，可以快速定位到上一次执行的命令</p>
-<p>② 使用 tab 键，能够快速补全路径</p>
-<p>③ 使用 esc 键，能够快速清空当前已输入的命令</p>
-<p>④ 输入 cls 命令，可以清空终端</p>
-<h3 id="2-webpack-命令"><a href="#2-webpack-命令" class="headerlink" title="2.webpack 命令"></a>2.webpack 命令</h3><p>1.npm init –y：初始化包管理配置文件 package.json</p>
-<p>2.npm install jquery –S：安装 jQuery</p>
-<p>-S 是 –save 的简写，在开发和部署上线都会用到的安装到-S</p>
-<p>3.在终端运行如下的命令，安装 webpack 相关的两个包：</p>
-<p>npm install <a href="mailto:&#119;&#101;&#98;&#112;&#x61;&#x63;&#107;&#64;&#53;&#46;&#52;&#x32;&#46;&#49;">&#119;&#101;&#98;&#112;&#x61;&#x63;&#107;&#64;&#53;&#46;&#52;&#x32;&#46;&#49;</a> <a href="mailto:&#x77;&#101;&#x62;&#x70;&#x61;&#x63;&#107;&#x2d;&#99;&#x6c;&#105;&#64;&#x34;&#46;&#55;&#46;&#x32;">&#x77;&#101;&#x62;&#x70;&#x61;&#x63;&#107;&#x2d;&#99;&#x6c;&#105;&#64;&#x34;&#46;&#55;&#46;&#x32;</a> -D</p>
-<p>-D 是–save-dev 的简写，只在开发阶段用到的安装到-D</p>
-<p>去 npmjs.com 网站查看规范手册</p>
-<p>4.script 节点下的脚本，用 npm run ‘’脚本名‘’ 命令，执行</p>
-<p>5.安装 webpack-dev-server：npm install <a href="mailto:&#119;&#101;&#98;&#112;&#x61;&#x63;&#x6b;&#45;&#100;&#x65;&#x76;&#x2d;&#115;&#x65;&#x72;&#x76;&#x65;&#x72;&#x40;&#x33;&#x2e;&#x31;&#49;&#x2e;&#50;">&#119;&#101;&#98;&#112;&#x61;&#x63;&#x6b;&#45;&#100;&#x65;&#x76;&#x2d;&#115;&#x65;&#x72;&#x76;&#x65;&#x72;&#x40;&#x33;&#x2e;&#x31;&#49;&#x2e;&#50;</a> -D</p>
-<p>webpack-dev-server 可以让 webpack 监听项目源代码的变化，从而进行自动打包构建。</p>
-<p>再次运行 npm run dev 命令，重新进行项目的打包</p>
-<p>在浏览器中访问 <a href="http://localhost:8080/">http://localhost:8080</a> 地址，查看自动打包效果</p>
-<p>ctrl c 两次，停止终端运行</p>
-<p>6.html-webpack-plugin 是 webpack 中的 HTML 插件，可以通过此插件自定制 index.html 页面的内容。</p>
-<p>运行如下的命令，即可在项目中安装此插件：</p>
-<p>npm install <a href="mailto:&#104;&#x74;&#x6d;&#108;&#45;&#x77;&#x65;&#98;&#x70;&#97;&#99;&#x6b;&#45;&#112;&#108;&#117;&#x67;&#105;&#x6e;&#x40;&#x35;&#x2e;&#51;&#46;&#50;">&#104;&#x74;&#x6d;&#108;&#45;&#x77;&#x65;&#98;&#x70;&#97;&#99;&#x6b;&#45;&#112;&#108;&#117;&#x67;&#105;&#x6e;&#x40;&#x35;&#x2e;&#51;&#46;&#50;</a> -D</p>
-<h3 id="3-vue-cli"><a href="#3-vue-cli" class="headerlink" title="3.vue-cli"></a>3.vue-cli</h3><p>vue-cli 是 Vue.js 开发的标准工具。它简化了程序员基于 webpack 创建工程化的 Vue 项目的过程。</p>
-<p>vue-cli 是 npm 上的一个全局包，使用 npm install 命令，即可方便的把它安装到自己的电脑上:</p>
-<p>npm install -g @vue&#x2F;cli</p>
-<p>基于 vue-cli 快速生成工程化的 Vue 项目：</p>
-<p>vue create 项目的名称</p>
-]]></content>
-      <categories>
-        <category>终端命令</category>
-      </categories>
-      <tags>
-        <tag>终端命令</tag>
+        <tag>CSS</tag>
       </tags>
   </entry>
   <entry>
@@ -484,25 +501,8 @@
         <category>HTML</category>
       </categories>
       <tags>
+        <tag>CSS</tag>
         <tag>HTML</tag>
-        <tag>CSS</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>CSS文本超出隐藏</title>
-    <url>/2022/08/17/HTML-CSS/%E6%96%87%E6%9C%AC%E8%B6%85%E5%87%BA%E9%9A%90%E8%97%8F/</url>
-    <content><![CDATA[<h2 id="单行文本超出隐藏"><a href="#单行文本超出隐藏" class="headerlink" title="单行文本超出隐藏"></a>单行文本超出隐藏</h2><span id="more"></span>
-
-<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="selector-class">.box</span> &#123;</span><br><span class="line">  <span class="attribute">width</span>: <span class="number">150px</span>;</span><br><span class="line">  <span class="attribute">height</span>: <span class="number">150px</span>;</span><br><span class="line">  <span class="attribute">background-color</span>: pink;</span><br><span class="line">  <span class="attribute">font-size</span>: <span class="number">20px</span>;</span><br><span class="line">  <span class="attribute">margin</span>: <span class="number">100px</span> auto;</span><br><span class="line"></span><br><span class="line">  <span class="comment">/* 第一步:溢出隐藏 */</span></span><br><span class="line">  <span class="attribute">overflow</span>: hidden;</span><br><span class="line">  <span class="comment">/* 既然是单行文本,就不能换行 */</span></span><br><span class="line">  <span class="attribute">white-space</span>: nowrap;</span><br><span class="line">  <span class="comment">/* 文本溢出的部分,用省略号来代替 */</span></span><br><span class="line">  <span class="attribute">text-overflow</span>: ellipsis;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h5 id="注意点"><a href="#注意点" class="headerlink" title="注意点"></a>注意点</h5><p>长串英文字母和数字默认是一个单词，为了其完整性，默认并不会主动换行</p>
-<h2 id="多行文本超出隐藏"><a href="#多行文本超出隐藏" class="headerlink" title="多行文本超出隐藏"></a>多行文本超出隐藏</h2><figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="selector-class">.box</span> &#123;</span><br><span class="line">  <span class="attribute">width</span>: <span class="number">200px</span>;</span><br><span class="line">  <span class="attribute">height</span>: <span class="number">80px</span>;</span><br><span class="line">  <span class="attribute">background-color</span>: pink;</span><br><span class="line">  <span class="attribute">margin</span>: <span class="number">100px</span> auto;</span><br><span class="line">  <span class="attribute">font-size</span>: <span class="number">20px</span>;</span><br><span class="line"></span><br><span class="line">  <span class="comment">/* 目的:实现3行文本溢出用省略号显示 */</span></span><br><span class="line">  -webkit-line-clamp: <span class="number">3</span>;</span><br><span class="line">  <span class="attribute">display</span>: -webkit-box;</span><br><span class="line">  -webkit-box-orient: vertical;</span><br><span class="line">  <span class="attribute">overflow</span>: hidden;</span><br><span class="line">  <span class="attribute">text-overflow</span>: ellipsis;</span><br><span class="line"></span><br><span class="line">  <span class="comment">/* 单行文本需要考虑盒子的宽度,才能还原需求 */</span></span><br><span class="line">  <span class="comment">/* 多行文本需要考虑盒子的宽度和高度,才能还原需求 */</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-]]></content>
-      <categories>
-        <category>HTML</category>
-      </categories>
-      <tags>
-        <tag>CSS</tag>
       </tags>
   </entry>
   <entry>
@@ -525,8 +525,8 @@
         <category>HTML</category>
       </categories>
       <tags>
-        <tag>HTML</tag>
         <tag>CSS</tag>
+        <tag>HTML</tag>
       </tags>
   </entry>
   <entry>
@@ -640,6 +640,150 @@
       </tags>
   </entry>
   <entry>
+    <title>各种API</title>
+    <url>/2022/08/23/JS%E5%9F%BA%E7%A1%80/%E5%90%84%E7%A7%8DAPI/</url>
+    <content><![CDATA[<h2 id="一-字符串相关方法"><a href="#一-字符串相关方法" class="headerlink" title="一.字符串相关方法"></a>一.字符串相关方法</h2><blockquote>
+<p>字符串的下标和长度只能获取属性,不能修改</p>
+</blockquote>
+<h4 id="1-字符串-charAt-下标-–-获取字符串的某一项"><a href="#1-字符串-charAt-下标-–-获取字符串的某一项" class="headerlink" title="1.字符串.charAt(下标) – 获取字符串的某一项"></a>1.字符串.charAt(下标) – 获取字符串的某一项</h4><blockquote>
+<p>console.log( a.charAt(4) );</p>
+</blockquote>
+<h4 id="2-charCodeAt-下标-–-返回字符串指定位置的字符的unicode编码"><a href="#2-charCodeAt-下标-–-返回字符串指定位置的字符的unicode编码" class="headerlink" title="2. .charCodeAt(下标) – 返回字符串指定位置的字符的unicode编码"></a>2. .charCodeAt(下标) – 返回字符串指定位置的字符的unicode编码</h4><blockquote>
+<p>console.log( a.charCodeAt(0) );</p>
+</blockquote>
+<h4 id="3-String-fromCharCode-字符编码-通过unicode编码返回对应的字符"><a href="#3-String-fromCharCode-字符编码-通过unicode编码返回对应的字符" class="headerlink" title="3. .String.fromCharCode(字符编码) - 通过unicode编码返回对应的字符"></a>3. .String.fromCharCode(字符编码) - 通过unicode编码返回对应的字符</h4><blockquote>
+<p>console.log( String.fromCharCode(1234) );</p>
+</blockquote>
+<h4 id="4-substring-起始位置-结束位置-–-截取字符串-返回新字符串"><a href="#4-substring-起始位置-结束位置-–-截取字符串-返回新字符串" class="headerlink" title="4. .substring(起始位置,结束位置) – 截取字符串 [ ) 返回新字符串;"></a>4. .substring(起始位置,结束位置) – 截取字符串 [ ) 返回新字符串;</h4><blockquote>
+<p>let b &#x3D; “亲,孤独终老吧!”<br>console.log( b.substring(2,4) );</p>
+</blockquote>
+<h4 id="5-substr-开始位置-长度-截取字符串-按照长度截取"><a href="#5-substr-开始位置-长度-截取字符串-按照长度截取" class="headerlink" title="5. .substr(开始位置,长度) 截取字符串 按照长度截取"></a>5. .substr(开始位置,长度) 截取字符串 按照长度截取</h4><blockquote>
+<p>console.log( b.substr(2,6) );</p>
+</blockquote>
+<h4 id="6-toLowerCase-将获取的字符串变成小写"><a href="#6-toLowerCase-将获取的字符串变成小写" class="headerlink" title="6. .toLowerCase(),将获取的字符串变成小写"></a>6. .toLowerCase(),将获取的字符串变成小写</h4><h4 id="7-toUpperCase-将获取的字符串变成大写"><a href="#7-toUpperCase-将获取的字符串变成大写" class="headerlink" title="7. .toUpperCase(),将获取的字符串变成大写"></a>7. .toUpperCase(),将获取的字符串变成大写</h4><blockquote>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> c = <span class="string">&quot;aaaaabbbbbCCCC&quot;</span>;</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(c.<span class="title function_">toLowerCase</span>());<span class="comment">//aaaaabbbbbccc</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(c.<span class="title function_">toUpperCase</span>());<span class="comment">//AAAAABBBBBCCCC</span></span><br></pre></td></tr></table></figure>
+</blockquote>
+<h4 id="8-x3D-x3D-split-切割界限-以参数为界限-对字符串进行切割-最终得到一个数组-不包含界限-x3D-x3D"><a href="#8-x3D-x3D-split-切割界限-以参数为界限-对字符串进行切割-最终得到一个数组-不包含界限-x3D-x3D" class="headerlink" title="8. &#x3D;&#x3D;.split(切割界限)- 以参数为界限,对字符串进行切割,最终得到一个数组(不包含界限)&#x3D;&#x3D;"></a>8. &#x3D;&#x3D;.split(切割界限)- 以参数为界限,对字符串进行切割,最终得到一个数组(不包含界限)&#x3D;&#x3D;</h4><blockquote>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span>  d = <span class="string">&quot;小哥哥,郑建斌,西瓜,陈予洁,墨良&quot;</span>;</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>( d.<span class="title function_">split</span>(<span class="string">&quot;,&quot;</span>) );</span><br><span class="line"><span class="keyword">let</span> e = <span class="string">&quot;1/1/1/1&quot;</span>;</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>( e.<span class="title function_">split</span>(<span class="string">&quot;/&quot;</span>));</span><br></pre></td></tr></table></figure>
+</blockquote>
+<h4 id="9-indexOf-–-找出字符串中-某一个字符或者某一段字符-出现的位置-找不到返回-1"><a href="#9-indexOf-–-找出字符串中-某一个字符或者某一段字符-出现的位置-找不到返回-1" class="headerlink" title="9. .indexOf() – 找出字符串中,某一个字符或者某一段字符 出现的位置,找不到返回 -1"></a>9. .indexOf() – 找出字符串中,某一个字符或者某一段字符 出现的位置,找不到返回 -1</h4><blockquote>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="title function_">lastIndexOf</span>()  -- 返回结果和indexOf相同,检索方向从后往前</span><br><span class="line"><span class="keyword">let</span> f = <span class="string">&quot;hello&quot;</span>;</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>( f.<span class="title function_">indexOf</span>(<span class="string">&quot;w&quot;</span>));</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>( f.<span class="title function_">indexOf</span>(<span class="string">&quot;lo&quot;</span>,<span class="number">3</span>));<span class="comment">// 从指定下标开始检索</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>( f.<span class="title function_">lastIndexOf</span>(<span class="string">&quot;l&quot;</span>,<span class="number">4</span>) );<span class="comment">// 在下标4之前检索</span></span><br></pre></td></tr></table></figure>
+</blockquote>
+<h4 id="10-slice-截取字符串"><a href="#10-slice-截取字符串" class="headerlink" title="10. .slice() * 截取字符串"></a>10. .slice() * 截取字符串</h4><blockquote>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> g = <span class="string">&quot;i am fine&quot;</span>;</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>( g.<span class="property">length</span>);</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>( g.<span class="title function_">slice</span>(<span class="number">4</span>));<span class="comment">//  fine(包含起始位置4以后所有的字符串)</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>( g.<span class="title function_">slice</span>(<span class="number">5</span>,<span class="number">7</span>)); <span class="comment">//fi(包含起始位置,不包含结束位置)</span></span><br></pre></td></tr></table></figure>
+</blockquote>
+<h4 id="11-includes-startsWidth-endsWidth-都是返回布尔值"><a href="#11-includes-startsWidth-endsWidth-都是返回布尔值" class="headerlink" title="11. .includes(),.startsWidth(),.endsWidth() 都是返回布尔值"></a>11. .includes(),.startsWidth(),.endsWidth() 都是返回布尔值</h4><blockquote>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> str = <span class="string">&quot;https://www.baidu.com&quot;</span>;</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>( str.<span class="title function_">includes</span>(<span class="string">&quot;www&quot;</span>));<span class="comment">//true</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>( str.<span class="title function_">startsWith</span>(<span class="string">&quot;httpw&quot;</span>));<span class="comment">//false</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>( str.<span class="title function_">endsWith</span>(<span class="string">&quot;.cn&quot;</span>));<span class="comment">//true</span></span><br></pre></td></tr></table></figure>
+</blockquote>
+<h4 id="12-repeat-n-将字符串重复n次-如果n为小数-则舍去小数"><a href="#12-repeat-n-将字符串重复n次-如果n为小数-则舍去小数" class="headerlink" title="12..repeat(n),将字符串重复n次,如果n为小数,则舍去小数"></a>12..repeat(n),将字符串重复n次,如果n为小数,则舍去小数</h4><blockquote>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> str=<span class="string">&quot;豆沙&quot;</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(str.<span class="title function_">repeat</span>(<span class="number">5</span>));<span class="comment">//豆沙豆沙豆沙豆沙豆沙</span></span><br></pre></td></tr></table></figure>
+</blockquote>
+<h2 id="二-数组相关方法"><a href="#二-数组相关方法" class="headerlink" title="二.数组相关方法"></a>二.数组相关方法</h2><h4 id="1-使用Array构造函数创建数组"><a href="#1-使用Array构造函数创建数组" class="headerlink" title="1.使用Array构造函数创建数组"></a>1.使用Array构造函数创建数组</h4><blockquote>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> colors = <span class="keyword">new</span>  <span class="title class_">Array</span>(<span class="number">10</span>);</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(colors);</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>( colors.<span class="property">length</span>);</span><br></pre></td></tr></table></figure>
+</blockquote>
+<blockquote>
+<p>如果预先知道数组要保存的项目数量,也可以给构造函数传递该数量,该数量会自动变成length</p>
+</blockquote>
+<blockquote>
+<p>可以向 Array 构造函数 传递数组中 应该包含的项</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> col = <span class="keyword">new</span>  <span class="title class_">Array</span>(<span class="string">&quot;red&quot;</span>);</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>( col );</span><br></pre></td></tr></table></figure>
+</blockquote>
+<blockquote>
+<p>如果传递的是数值,则会按照该数值创建包含给定项数的数组<br>而如果是其他的参数类型,则会创建包含那个值的只有一项的数组</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> num = <span class="keyword">new</span>  <span class="title class_">Array</span>(<span class="number">1</span>);</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>( num );</span><br></pre></td></tr></table></figure>
+</blockquote>
+<h4 id="2-数组字面量"><a href="#2-数组字面量" class="headerlink" title="2.数组字面量"></a>2.数组字面量</h4><blockquote>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> names = [];<span class="comment">// 创建一个空的数组</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>( names);</span><br></pre></td></tr></table></figure>
+</blockquote>
+<h4 id="3-特殊情况"><a href="#3-特殊情况" class="headerlink" title="3.特殊情况"></a>3.特殊情况</h4><blockquote>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> gg = [<span class="string">&quot;gg&quot;</span>,<span class="string">&quot;dd&quot;</span>,<span class="string">&quot;kk&quot;</span>];</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>( gg.<span class="property">length</span> );</span><br><span class="line">gg.<span class="property">length</span> = <span class="number">2</span>;</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>( gg );</span><br><span class="line">gg.<span class="property">length</span> = <span class="number">5</span>;</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>( gg );</span><br></pre></td></tr></table></figure>
+</blockquote>
+<blockquote>
+<p>假设 数组的长度为 a<br>我们给数组设置一个length的属性值为 b,那么当b &lt; a 时, 就把数组在第b个以后的项目删除</p>
+<p>b &gt; a 时, 就把数组在第 a个之后在增加 (b-a)个空项目</p>
+</blockquote>
+<h4 id="4-数组的检测"><a href="#4-数组的检测" class="headerlink" title="4.数组的检测:"></a>4.数组的检测:</h4><blockquote>
+<p>待检测变量 instanceof Array<br>    Array.isArray(待检测变量)</p>
+</blockquote>
+<h2 id="三-数组的操作方法"><a href="#三-数组的操作方法" class="headerlink" title="三.数组的操作方法"></a>三.数组的操作方法</h2><h4 id="1-push-–-向数组末尾增加一个数组项-数组的长度自动增加1-会返回数组的新长度"><a href="#1-push-–-向数组末尾增加一个数组项-数组的长度自动增加1-会返回数组的新长度" class="headerlink" title="1.push – 向数组末尾增加一个数组项,数组的长度自动增加1,会返回数组的新长度"></a>1.push – 向数组末尾增加一个数组项,数组的长度自动增加1,会返回数组的新长度</h4><blockquote>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="title class_">Array</span>.<span class="title function_">push</span>(数组项)</span><br><span class="line"><span class="keyword">let</span> arr = [<span class="string">&quot;西瓜&quot;</span>,<span class="string">&quot;橘子&quot;</span>,<span class="string">&quot;木瓜&quot;</span>];</span><br><span class="line">arr.<span class="title function_">push</span>(<span class="string">&quot;带娃&quot;</span>);</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>( arr );</span><br><span class="line"><span class="keyword">let</span> length = arr.<span class="title function_">push</span>()</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(length)<span class="comment">//4</span></span><br></pre></td></tr></table></figure>
+</blockquote>
+<h4 id="2-shift-–-删除数组的第一个数组项-数组长度自动减1，会返回被删除的元素"><a href="#2-shift-–-删除数组的第一个数组项-数组长度自动减1，会返回被删除的元素" class="headerlink" title="2.shift – 删除数组的第一个数组项,数组长度自动减1，会返回被删除的元素"></a>2.shift – 删除数组的第一个数组项,数组长度自动减1，会返回被删除的元素</h4><blockquote>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="title class_">Array</span>.<span class="title function_">shift</span>()</span><br><span class="line">arr.<span class="title function_">shift</span>();</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(arr);</span><br></pre></td></tr></table></figure>
+</blockquote>
+<h4 id="3-unshift-–-向数组开始位置增加一个数组项-数组长度自动-1-会返回数组的新长度"><a href="#3-unshift-–-向数组开始位置增加一个数组项-数组长度自动-1-会返回数组的新长度" class="headerlink" title="3.unshift – 向数组开始位置增加一个数组项,数组长度自动+1,会返回数组的新长度"></a>3.unshift – 向数组开始位置增加一个数组项,数组长度自动+1,会返回数组的新长度</h4><blockquote>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="title class_">Array</span>.<span class="title function_">unshift</span>(数组项)</span><br><span class="line">arr.<span class="title function_">unshift</span>(<span class="string">&quot;柚子&quot;</span>);</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(arr);</span><br></pre></td></tr></table></figure>
+</blockquote>
+<h4 id="4-pop-–-删除数组的最后一个数组项目-数组的length自动-1，会返回被删除的元素"><a href="#4-pop-–-删除数组的最后一个数组项目-数组的length自动-1，会返回被删除的元素" class="headerlink" title="4.pop – 删除数组的最后一个数组项目,数组的length自动-1，会返回被删除的元素"></a>4.pop – 删除数组的最后一个数组项目,数组的length自动-1，会返回被删除的元素</h4><blockquote>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="title class_">Array</span>.<span class="title function_">pop</span>()</span><br><span class="line">arr.<span class="title function_">pop</span>();</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(arr);</span><br></pre></td></tr></table></figure>
+</blockquote>
+<h2 id="四-数组的高级方法"><a href="#四-数组的高级方法" class="headerlink" title="四.数组的高级方法"></a>四.数组的高级方法</h2><h4 id="1-slice-sn-en-通过下标截取数组-返回新数组"><a href="#1-slice-sn-en-通过下标截取数组-返回新数组" class="headerlink" title="1.slice(sn,en) 通过下标截取数组 返回新数组"></a>1.slice(sn,en) 通过下标截取数组 返回新数组</h4><blockquote>
+<p>不改变原数组, 区间左闭右开 , 只有一个参数默认这个下标开始一直到结束</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> arr = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>,<span class="number">6</span>,<span class="number">7</span>];</span><br><span class="line"><span class="keyword">let</span> arr1 = arr.<span class="title function_">slice</span>(<span class="number">3</span>,<span class="number">6</span>);</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(arr1);<span class="comment">//[4,5,6,7]</span></span><br></pre></td></tr></table></figure>
+</blockquote>
+<h4 id="2-x3D-x3D-splice-index-num-info-–改变数组-–返回新的数组-截取-替换-添加-x3D-x3D"><a href="#2-x3D-x3D-splice-index-num-info-–改变数组-–返回新的数组-截取-替换-添加-x3D-x3D" class="headerlink" title="2.&#x3D;&#x3D;splice(index,num,info)  –改变数组 –返回新的数组   截取 替换 添加&#x3D;&#x3D;"></a>2.&#x3D;&#x3D;splice(index,num,info)  –改变数组 –返回新的数组   截取 替换 添加&#x3D;&#x3D;</h4><blockquote>
+<p>index - 从数组第几项开始–必选<br>        num - 截取的数量<br>        info - 从截取的位置开始添加数组项</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> arr = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>,<span class="number">6</span>,<span class="number">7</span>];</span><br><span class="line"><span class="keyword">let</span> arr1 = arr.<span class="title function_">splice</span>(<span class="number">2</span>,<span class="number">3</span>,<span class="string">&quot;我&quot;</span>,<span class="string">&quot;爱&quot;</span>,<span class="string">&quot;你&quot;</span>,<span class="string">&quot;呀&quot;</span>);</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(arr1);<span class="comment">//[3,4,5]</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(arr);<span class="comment">//[1,2,&quot;我&quot;,&quot;爱&quot;,&quot;你&quot;,&quot;呀&quot;]</span></span><br></pre></td></tr></table></figure>
+</blockquote>
+<h4 id="3-骚操作"><a href="#3-骚操作" class="headerlink" title="3.骚操作"></a>3.骚操作</h4><blockquote>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> arr = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>,<span class="number">6</span>,<span class="number">7</span>];</span><br><span class="line"><span class="comment">// push 后增</span></span><br><span class="line"><span class="keyword">let</span> arr1 = arr.<span class="title function_">splice</span>(arr.<span class="property">length</span>,<span class="number">0</span>,<span class="string">&quot;我&quot;</span>);<span class="comment">//[1,2,3,4,5,6,7,&quot;我&quot;</span></span><br><span class="line"><span class="comment">// pop 后减</span></span><br><span class="line"><span class="keyword">let</span> arr1 = arr.<span class="title function_">splice</span>(arr.<span class="property">length</span>-<span class="number">1</span>,<span class="number">1</span>);<span class="comment">//[1,2,3,4,5,6]</span></span><br><span class="line"><span class="comment">// unshift 前增</span></span><br><span class="line"><span class="keyword">let</span> arr1 = arr.<span class="title function_">splice</span>(<span class="number">0</span>,<span class="number">0</span>,<span class="string">&quot;豆沙&quot;</span>);<span class="comment">//[&quot;豆沙&quot;,1,2,3,4,5,6,7]</span></span><br><span class="line"><span class="comment">//shift 前减</span></span><br><span class="line"><span class="keyword">let</span> arr1 = arr.<span class="title function_">splice</span>(<span class="number">0</span>,<span class="number">1</span>);<span class="comment">//[2,3,4,5,6,7]</span></span><br><span class="line"><span class="comment">//slice 切割 - 不改变原数组,splice会改变原数组</span></span><br><span class="line"><span class="keyword">let</span> arr1 = arr.<span class="title function_">splice</span>(<span class="number">3</span>,<span class="number">2</span>);</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(arr1);<span class="comment">//[4,5]</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(arr)<span class="comment">//[1,2,3,6,7]</span></span><br></pre></td></tr></table></figure>
+</blockquote>
+<h2 id="五-sort排序"><a href="#五-sort排序" class="headerlink" title="五.sort排序"></a>五.sort排序</h2><h4 id="1-reverse-方法"><a href="#1-reverse-方法" class="headerlink" title="1.reverse()方法"></a>1.reverse()方法</h4><blockquote>
+<h4 id="会反转数组的顺序-直接在原始的数组上排序，只是单纯的调转数字的数组项的整体顺序而已-会改变原始数组"><a href="#会反转数组的顺序-直接在原始的数组上排序，只是单纯的调转数字的数组项的整体顺序而已-会改变原始数组" class="headerlink" title="会反转数组的顺序,直接在原始的数组上排序，只是单纯的调转数字的数组项的整体顺序而已,会改变原始数组"></a>会反转数组的顺序,直接在原始的数组上排序，只是单纯的调转数字的数组项的整体顺序而已,会改变原始数组</h4><figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> values = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>];</span><br><span class="line">values.<span class="title function_">reverse</span>();</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(values);<span class="comment">//[5,4,3,2,1]</span></span><br><span class="line"><span class="keyword">let</span> val = [<span class="number">1</span>,<span class="number">3</span>,<span class="number">5</span>,<span class="number">2</span>,<span class="number">4</span>];</span><br><span class="line">val.<span class="title function_">reverse</span>();</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(val);<span class="comment">//[4,2,5,3,1]</span></span><br></pre></td></tr></table></figure>
+</blockquote>
+<h4 id="2-sort-的默认功效"><a href="#2-sort-的默认功效" class="headerlink" title="2.sort() 的默认功效"></a>2.sort() 的默认功效</h4><blockquote>
+<h4 id="会按照字符串的先后顺序对数组的每一个数组项目的字符顺序进行排序"><a href="#会按照字符串的先后顺序对数组的每一个数组项目的字符顺序进行排序" class="headerlink" title="会按照字符串的先后顺序对数组的每一个数组项目的字符顺序进行排序"></a>会按照字符串的先后顺序对数组的每一个数组项目的字符顺序进行排序</h4><h4 id="如果数组的某个项目不是字符串-会先把数组项目转换为字符串-再来按照比较字符串的比较方式来排序"><a href="#如果数组的某个项目不是字符串-会先把数组项目转换为字符串-再来按照比较字符串的比较方式来排序" class="headerlink" title="如果数组的某个项目不是字符串,会先把数组项目转换为字符串,再来按照比较字符串的比较方式来排序"></a>如果数组的某个项目不是字符串,会先把数组项目转换为字符串,再来按照比较字符串的比较方式来排序</h4><p>&#x3D;&#x3D;会改变原始数组&#x3D;&#x3D;</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> arr = [<span class="number">1</span>,<span class="number">3</span>,<span class="number">5</span>,<span class="number">2</span>,<span class="number">4</span>];</span><br><span class="line">arr.<span class="title function_">sort</span>();</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(arr);<span class="comment">//[1,2,3,4,5]</span></span><br><span class="line"><span class="keyword">let</span> arr1 = [<span class="number">10</span>,<span class="number">3</span>,<span class="number">50</span>,<span class="number">2</span>,<span class="number">4</span>];</span><br><span class="line">arr1.<span class="title function_">sort</span>();</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(arr1);<span class="comment">//[10,2,3,4,50]</span></span><br></pre></td></tr></table></figure>
+</blockquote>
+<h4 id="3-sort-传入一个参数-这个参数必须是函数-比较函数-比较函数接收两个参数"><a href="#3-sort-传入一个参数-这个参数必须是函数-比较函数-比较函数接收两个参数" class="headerlink" title="3.sort()传入一个参数,这个参数必须是函数(比较函数),比较函数接收两个参数"></a>3.sort()传入一个参数,这个参数必须是函数(比较函数),比较函数接收两个参数</h4><blockquote>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> arr1 = [<span class="number">10</span>,<span class="number">3</span>,<span class="number">50</span>,<span class="number">2</span>,<span class="number">4</span>];</span><br><span class="line">arr.<span class="title function_">sort</span>(<span class="keyword">function</span>(<span class="params">a,b</span>)&#123;</span><br><span class="line"><span class="keyword">return</span> a-b <span class="comment">// 从小到大(升序)</span></span><br><span class="line"><span class="keyword">return</span> b-a <span class="comment">// 从大到小(降序)</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> obj = [</span><br><span class="line">         &#123;<span class="attr">pro</span>:<span class="string">&quot;猫&quot;</span>,<span class="attr">price</span>:<span class="number">1</span>&#125;,</span><br><span class="line">         &#123;<span class="attr">pro</span>:<span class="string">&quot;狗&quot;</span>,<span class="attr">price</span>:<span class="number">30</span>&#125;,</span><br><span class="line">         &#123;<span class="attr">pro</span>:<span class="string">&quot;兔子&quot;</span>,<span class="attr">price</span>:<span class="number">29</span>&#125;,</span><br><span class="line">         &#123;<span class="attr">pro</span>:<span class="string">&quot;老鼠&quot;</span>,<span class="attr">price</span>:<span class="number">12</span>&#125;</span><br><span class="line">     ];</span><br><span class="line">obj.<span class="title function_">sort</span>(<span class="keyword">function</span> (<span class="params">a,b</span>) &#123;</span><br><span class="line">  <span class="keyword">return</span> a.<span class="property">price</span>-b.<span class="property">price</span>;<span class="comment">//按价格从小到大排序</span></span><br><span class="line"> &#125;)</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>( obj )</span><br></pre></td></tr></table></figure>
+</blockquote>
+<h4 id="4-concat-合并两个数组为一个新的数组"><a href="#4-concat-合并两个数组为一个新的数组" class="headerlink" title="4.concat()合并两个数组为一个新的数组"></a>4.concat()合并两个数组为一个新的数组</h4><blockquote>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> aa = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>];</span><br><span class="line"><span class="keyword">let</span> bb = [<span class="number">7</span>,<span class="number">8</span>,<span class="number">9</span>];</span><br><span class="line"><span class="keyword">let</span> ab = aa.<span class="title function_">concat</span>(bb);</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(ab)<span class="comment">//[1,2,3,7,8,9]</span></span><br></pre></td></tr></table></figure>
+</blockquote>
+<h4 id="5-join-“拼接符号-空-空格都可-”-将数组拼接成字符串"><a href="#5-join-“拼接符号-空-空格都可-”-将数组拼接成字符串" class="headerlink" title="5.join(“拼接符号(空,空格都可)”)将数组拼接成字符串"></a>5.join(“拼接符号(空,空格都可)”)将数组拼接成字符串</h4><blockquote>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> a = [<span class="string">&quot;gg&quot;</span>,<span class="string">&quot;xx&quot;</span>,<span class="string">&quot;ss&quot;</span>,<span class="string">&quot;cc&quot;</span>,<span class="string">&quot;qq&quot;</span>];</span><br><span class="line"><span class="keyword">let</span> b = a.<span class="title function_">join</span>(<span class="string">&quot;+&quot;</span>);</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(b );<span class="comment">//[gg+xx+ss+cc+qq]</span></span><br><span class="line"><span class="keyword">let</span> str = <span class="string">&quot;我爱你&quot;</span>;</span><br><span class="line"><span class="keyword">let</span> arr = str.<span class="title function_">split</span>(<span class="string">&quot;&quot;</span>);</span><br><span class="line">arr.<span class="title function_">reverse</span>();</span><br><span class="line"><span class="keyword">let</span> str1 = arr.<span class="title function_">join</span>(<span class="string">&quot;&quot;</span>);</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>( str1 , str )<span class="comment">//你爱我  我爱你</span></span><br></pre></td></tr></table></figure>
+</blockquote>
+<h4 id="6-Array-from-类数组对象-转换成数组"><a href="#6-Array-from-类数组对象-转换成数组" class="headerlink" title="6.Array.from() - 类数组对象 转换成数组"></a>6.Array.from() - 类数组对象 转换成数组</h4><blockquote>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">fn</span>(<span class="params"></span>) &#123;</span><br><span class="line">        <span class="keyword">let</span> arr = <span class="title class_">Array</span>.<span class="title function_">from</span>(<span class="variable language_">arguments</span>)</span><br><span class="line">         <span class="variable language_">console</span>.<span class="title function_">log</span>(arr);</span><br><span class="line">     &#125;</span><br><span class="line"><span class="title function_">fn</span>(<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>);<span class="comment">//[1,2,3]</span></span><br></pre></td></tr></table></figure>
+</blockquote>
+<h4 id="7-indexOf-查找数组项返回下标-如果没有则返回-1"><a href="#7-indexOf-查找数组项返回下标-如果没有则返回-1" class="headerlink" title="7.indexOf() - 查找数组项返回下标,如果没有则返回-1"></a>7.indexOf() - 查找数组项返回下标,如果没有则返回-1</h4><blockquote>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> ss = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>].<span class="title function_">indexOf</span>(<span class="number">2</span>);</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(ss);<span class="comment">//1</span></span><br><span class="line"><span class="keyword">let</span> ss = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>].<span class="title function_">indexOf</span>(<span class="number">5</span>);</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(ss);<span class="comment">//-1</span></span><br></pre></td></tr></table></figure>
+</blockquote>
+<h4 id="8-includes-查看是否包含参数的值-返回布尔值"><a href="#8-includes-查看是否包含参数的值-返回布尔值" class="headerlink" title="8.includes() 查看是否包含参数的值,返回布尔值"></a>8.includes() 查看是否包含参数的值,返回布尔值</h4><blockquote>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> dd = [<span class="string">&quot;aa&quot;</span>,<span class="string">&quot;bb&quot;</span>,<span class="string">&quot;ccs&quot;</span>].<span class="title function_">includes</span>(<span class="string">&quot;ccs&quot;</span>);</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>( dd )<span class="comment">//true</span></span><br><span class="line"><span class="keyword">let</span> dd = [<span class="string">&quot;aa&quot;</span>,<span class="string">&quot;bb&quot;</span>,<span class="string">&quot;ccs&quot;</span>].<span class="title function_">includes</span>(<span class="string">&quot;cc&quot;</span>);</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>( dd )<span class="comment">//false</span></span><br></pre></td></tr></table></figure>
+</blockquote>
+<h2 id="六-数组的循环-forEach"><a href="#六-数组的循环-forEach" class="headerlink" title="六.数组的循环(forEach)"></a>六.数组的循环(forEach)</h2><blockquote>
+<h5 id="接收的必须是一个函数"><a href="#接收的必须是一个函数" class="headerlink" title="接收的必须是一个函数"></a>接收的必须是一个函数</h5><h5 id="该方法没有返回值"><a href="#该方法没有返回值" class="headerlink" title="该方法没有返回值"></a>该方法没有返回值</h5><h5 id="该方法-可以-修改原数组"><a href="#该方法-可以-修改原数组" class="headerlink" title="该方法 可以 修改原数组"></a>该方法 可以 修改原数组</h5><h5 id="函数传参时-传入一个普通数据类型不会修改原数组"><a href="#函数传参时-传入一个普通数据类型不会修改原数组" class="headerlink" title="函数传参时,传入一个普通数据类型不会修改原数组"></a>函数传参时,传入一个普通数据类型不会修改原数组</h5><h5 id="传入一个引用数据类型时会修改原数组"><a href="#传入一个引用数据类型时会修改原数组" class="headerlink" title="传入一个引用数据类型时会修改原数组"></a>传入一个引用数据类型时会修改原数组</h5><figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> arr = [<span class="string">&quot;a&quot;</span>,<span class="string">&quot;b&quot;</span>,<span class="string">&quot;c&quot;</span>,<span class="string">&quot;d&quot;</span>];</span><br><span class="line">     arr.<span class="title function_">forEach</span>(<span class="keyword">function</span>(<span class="params">value, index, array</span>)&#123;</span><br><span class="line">         <span class="comment">// console.log( value, index, array )</span></span><br><span class="line">         <span class="comment">// array[index] += 10;//(引用数据类型) a10 b10 c10 d10</span></span><br><span class="line">         value += <span class="number">10</span>;<span class="comment">//(普通数据类型)[&quot;a&quot;,&quot;b&quot;,&quot;c&quot;,&quot;d&quot;]</span></span><br><span class="line">         <span class="variable language_">console</span>.<span class="title function_">log</span>(value)</span><br><span class="line">     &#125;);</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>( arr );</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> ap = <span class="variable language_">document</span>.<span class="title function_">querySelectorAll</span>(<span class="string">&quot;p&quot;</span>);</span><br><span class="line">     <span class="variable language_">console</span>.<span class="title function_">log</span>(ap)</span><br><span class="line">     ap.<span class="title function_">forEach</span>(<span class="keyword">function</span> (<span class="params">ele,i</span>) &#123;</span><br><span class="line">         ele.<span class="property">onclick</span> = <span class="keyword">function</span> (<span class="params"></span>) &#123;</span><br><span class="line">             <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="variable language_">this</span>.<span class="property">innerHTML</span>,i)</span><br><span class="line">         &#125;</span><br><span class="line">     &#125;);</span><br></pre></td></tr></table></figure>
+</blockquote>
+<h2 id="七-every"><a href="#七-every" class="headerlink" title="七.every();"></a>七.every();</h2><blockquote>
+<h5 id="接收的回调函数-—-三个参数-数组项-数组下标-数组本身-需要用谁就传谁"><a href="#接收的回调函数-—-三个参数-数组项-数组下标-数组本身-需要用谁就传谁" class="headerlink" title="接收的回调函数 — 三个参数 : 数组项 ,数组下标, 数组本身,需要用谁就传谁"></a>接收的回调函数 — 三个参数 : 数组项 ,数组下标, 数组本身,需要用谁就传谁</h5><h5 id="必须对每一项都返回true-这个方法才返回true-否则返回false"><a href="#必须对每一项都返回true-这个方法才返回true-否则返回false" class="headerlink" title="必须对每一项都返回true,这个方法才返回true,否则返回false"></a>必须对每一项都返回true,这个方法才返回true,否则返回false</h5><figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> num = [<span class="number">3</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>,<span class="number">6</span>,<span class="number">4</span>,<span class="number">3</span>,<span class="number">2</span>,<span class="number">1</span>];</span><br><span class="line"><span class="keyword">let</span> res = num.<span class="title function_">every</span>(<span class="keyword">function</span> (<span class="params">item,index,array</span>) &#123;</span><br><span class="line">       <span class="keyword">return</span> (item &gt; <span class="number">1</span>);</span><br><span class="line">   &#125;);</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>( res );<span class="comment">//false</span></span><br></pre></td></tr></table></figure>
+</blockquote>
+<h2 id="八-some"><a href="#八-some" class="headerlink" title="八.some();"></a>八.some();</h2><blockquote>
+<h5 id="接收的回调函数-—-三个参数-数组项-数组下标-数组本身-需要用谁就传谁-1"><a href="#接收的回调函数-—-三个参数-数组项-数组下标-数组本身-需要用谁就传谁-1" class="headerlink" title="接收的回调函数 — 三个参数 : 数组项 ,数组下标, 数组本身,需要用谁就传谁"></a>接收的回调函数 — 三个参数 : 数组项 ,数组下标, 数组本身,需要用谁就传谁</h5><h5 id="只要传入的函数对数组中的某一项返回true-就会返回true"><a href="#只要传入的函数对数组中的某一项返回true-就会返回true" class="headerlink" title="只要传入的函数对数组中的某一项返回true,就会返回true"></a>只要传入的函数对数组中的某一项返回true,就会返回true</h5><figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> num = [<span class="number">3</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>,<span class="number">6</span>,<span class="number">4</span>,<span class="number">3</span>,<span class="number">2</span>,<span class="number">1</span>];</span><br><span class="line"><span class="keyword">let</span> res = num.<span class="title function_">some</span>(<span class="keyword">function</span> (<span class="params">item,index,array</span>) &#123;</span><br><span class="line">       <span class="keyword">return</span> (item &gt; <span class="number">5</span>);</span><br><span class="line">   &#125;);</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>( res );<span class="comment">//true</span></span><br></pre></td></tr></table></figure>
+</blockquote>
+<h2 id="九-x3D-x3D-filter-x3D-x3D"><a href="#九-x3D-x3D-filter-x3D-x3D" class="headerlink" title="九.&#x3D;&#x3D;filter();&#x3D;&#x3D;"></a>九.&#x3D;&#x3D;filter();&#x3D;&#x3D;</h2><blockquote>
+<h5 id="接收的回调函数-—-三个参数-数组项-数组下标-数组本身-需要用谁就传谁-2"><a href="#接收的回调函数-—-三个参数-数组项-数组下标-数组本身-需要用谁就传谁-2" class="headerlink" title="接收的回调函数 — 三个参数 : 数组项 ,数组下标, 数组本身,需要用谁就传谁"></a>接收的回调函数 — 三个参数 : 数组项 ,数组下标, 数组本身,需要用谁就传谁</h5><h5 id="利用指定函数中return的语句条件，把所有符合条件的数组项目组成一个新的数组返回"><a href="#利用指定函数中return的语句条件，把所有符合条件的数组项目组成一个新的数组返回" class="headerlink" title="利用指定函数中return的语句条件，把所有符合条件的数组项目组成一个新的数组返回"></a>利用指定函数中return的语句条件，把所有符合条件的数组项目组成一个新的数组返回</h5><h5 id="不改变原来的数组"><a href="#不改变原来的数组" class="headerlink" title="不改变原来的数组"></a>不改变原来的数组</h5><figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> arr = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>,<span class="number">6</span>,<span class="number">4</span>,<span class="number">3</span>,<span class="number">2</span>,<span class="number">1</span>];</span><br><span class="line">   <span class="keyword">var</span> res = arr.<span class="title function_">filter</span>(<span class="keyword">function</span> (<span class="params">item,i,arr</span>) &#123;</span><br><span class="line">       <span class="keyword">return</span>( item &gt; <span class="number">2</span> );</span><br><span class="line">   &#125;)</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(res)<span class="comment">//[3,4,5,6,4,3]</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(arr)<span class="comment">//[1,2,3,4,5,6,4,3,2,1]</span></span><br></pre></td></tr></table></figure>
+</blockquote>
+<h2 id="十-x3D-x3D-map-x3D-x3D"><a href="#十-x3D-x3D-map-x3D-x3D" class="headerlink" title="十.&#x3D;&#x3D;map();&#x3D;&#x3D;"></a>十.&#x3D;&#x3D;map();&#x3D;&#x3D;</h2><blockquote>
+<h5 id="接收的回调函数-—-三个参数-数组项-数组下标-数组本身-需要用谁就传谁-需配合return使用"><a href="#接收的回调函数-—-三个参数-数组项-数组下标-数组本身-需要用谁就传谁-需配合return使用" class="headerlink" title="接收的回调函数 — 三个参数 : 数组项 ,数组下标, 数组本身,需要用谁就传谁,需配合return使用"></a>接收的回调函数 — 三个参数 : 数组项 ,数组下标, 数组本身,需要用谁就传谁,需配合return使用</h5><h5 id="map如果没有return-则返回元素项数个数-都为undefined组成的新数组"><a href="#map如果没有return-则返回元素项数个数-都为undefined组成的新数组" class="headerlink" title="map如果没有return,则返回元素项数个数,都为undefined组成的新数组"></a>map如果没有return,则返回元素项数个数,都为undefined组成的新数组</h5><h5 id="不改变原数组"><a href="#不改变原数组" class="headerlink" title="不改变原数组"></a>不改变原数组</h5><figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> a = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>];</span><br><span class="line"><span class="keyword">let</span> b = a.<span class="title function_">map</span>(<span class="keyword">function</span> (<span class="params">val</span>) &#123;</span><br><span class="line">         <span class="keyword">return</span>  val + <span class="number">1</span>;</span><br><span class="line">     &#125;);</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(b);<span class="comment">//[2,3,4]</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(a);<span class="comment">//[1,2,3]</span></span><br></pre></td></tr></table></figure>
+</blockquote>
+<h2 id="十一-归并-reduce"><a href="#十一-归并-reduce" class="headerlink" title="十一.归并 reduce()"></a>十一.归并 reduce()</h2><blockquote>
+<h5 id="迭代数组所有项目-—-构建一个最终返回值"><a href="#迭代数组所有项目-—-构建一个最终返回值" class="headerlink" title="迭代数组所有项目 — 构建一个最终返回值"></a>迭代数组所有项目 — 构建一个最终返回值</h5><h5 id="一个函数-和-可选-作为归并基础的-初始值"><a href="#一个函数-和-可选-作为归并基础的-初始值" class="headerlink" title="一个函数 和 (可选) 作为归并基础的 初始值"></a>一个函数 和 (可选) 作为归并基础的 初始值</h5><h5 id="接受一个回调函数-4参数-分别是-前一个值-上一次的运算结果-当前值-数组下标-和-数组"><a href="#接受一个回调函数-4参数-分别是-前一个值-上一次的运算结果-当前值-数组下标-和-数组" class="headerlink" title="接受一个回调函数,4参数 - 分别是: 前一个值(上一次的运算结果),当前值,数组下标 和 数组"></a>接受一个回调函数,4参数 - 分别是: 前一个值(上一次的运算结果),当前值,数组下标 和 数组</h5><figure class="highlight js"><table><tr><td class="code"><pre><span class="line">	<span class="keyword">let</span> value = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>,<span class="number">6</span>];</span><br><span class="line"><span class="keyword">let</span> sum = value.<span class="title function_">reduce</span>(<span class="keyword">function</span> (<span class="params">pre,cur,index,arr</span>) &#123;</span><br><span class="line">         <span class="variable language_">console</span>.<span class="title function_">log</span>( pre,cur);</span><br><span class="line">         <span class="keyword">return</span> pre*cur;</span><br><span class="line">     &#125;);</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>( sum );</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> sum1 = value.<span class="title function_">reduce</span>(<span class="keyword">function</span> (<span class="params">pre,cur,index,arr</span>) &#123;</span><br><span class="line">         <span class="variable language_">console</span>.<span class="title function_">log</span>( pre,cur);</span><br><span class="line">         <span class="keyword">return</span> pre + cur;</span><br><span class="line">     &#125;,<span class="number">10</span>);</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>( sum1 );</span><br></pre></td></tr></table></figure>
+</blockquote>
+]]></content>
+      <categories>
+        <category>JS基础</category>
+      </categories>
+      <tags>
+        <tag>JavaScript</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>filter筛选数组</title>
     <url>/2022/08/22/JS%E8%BF%9B%E9%98%B6/filter%E7%AD%9B%E9%80%89%E6%95%B0%E7%BB%84/</url>
     <content><![CDATA[<h3 id="filter-方法"><a href="#filter-方法" class="headerlink" title="filter()方法"></a>filter()方法</h3><span id="more"></span>
@@ -671,6 +815,105 @@
 
 <h4 id="箭头函数写法"><a href="#箭头函数写法" class="headerlink" title="箭头函数写法"></a>箭头函数写法</h4><figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> result = arr.<span class="title function_">forEach</span>(<span class="function"><span class="params">item</span> =&gt;</span> <span class="variable language_">console</span>.<span class="title function_">log</span>(item))</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(result);<span class="comment">//undefined</span></span><br></pre></td></tr></table></figure>
 
+]]></content>
+      <categories>
+        <category>JS进阶</category>
+      </categories>
+      <tags>
+        <tag>JS进阶</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>作用域</title>
+    <url>/2022/08/23/JS%E8%BF%9B%E9%98%B6/%E4%BD%9C%E7%94%A8%E5%9F%9F/</url>
+    <content><![CDATA[<h3 id="作用域"><a href="#作用域" class="headerlink" title="作用域"></a>作用域</h3><span id="more"></span>
+
+<p>作用域（scope）规定了变量能够被访问的“范围”，离开了这个“范围”变量便不能被访问，作用域分为全局作用域和局部作用域。</p>
+<h4 id="1-局部作用域"><a href="#1-局部作用域" class="headerlink" title="1.局部作用域"></a>1.局部作用域</h4><p>局部作用域分为函数作用域和块作用域。</p>
+<h5 id="1-1函数作用域"><a href="#1-1函数作用域" class="headerlink" title="1.1函数作用域"></a>1.1函数作用域</h5><p>在函数内部声明的变量只能在函数内部被访问，外部无法直接访问。</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line">&lt;script&gt;</span><br><span class="line">  <span class="comment">// 声明 counter 函数</span></span><br><span class="line">  <span class="keyword">function</span> <span class="title function_">counter</span>(<span class="params">x, y</span>) &#123;</span><br><span class="line">    <span class="comment">// 函数内部声明的变量</span></span><br><span class="line">    <span class="keyword">const</span> s = x + y</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(s) <span class="comment">// 18</span></span><br><span class="line">  &#125;</span><br><span class="line">  <span class="comment">// 设用 counter 函数</span></span><br><span class="line">  <span class="title function_">counter</span>(<span class="number">10</span>, <span class="number">8</span>)</span><br><span class="line">  <span class="comment">// 访问变量 s</span></span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(s)<span class="comment">// 报错</span></span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>总结：</p>
+<ol>
+<li>函数内部声明的变量，在函数外部无法被访问</li>
+<li>函数的参数也是函数内部的局部变量</li>
+<li>不同函数内部声明的变量无法互相访问</li>
+<li>函数执行完毕后，函数内部的变量实际被清空了</li>
+</ol>
+</blockquote>
+<h5 id="1-2块作用域"><a href="#1-2块作用域" class="headerlink" title="1.2块作用域"></a>1.2块作用域</h5><p>在 JavaScript 中使用 <code>&#123;&#125;</code> 包裹的代码称为代码块，代码块内部声明的变量外部将【有可能】无法被访问。</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line">&lt;script&gt;</span><br><span class="line">  &#123;</span><br><span class="line">    <span class="comment">// age 只能在该代码块中被访问</span></span><br><span class="line">    <span class="keyword">let</span> age = <span class="number">18</span>;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(age); <span class="comment">// 正常</span></span><br><span class="line">  &#125;</span><br><span class="line">  </span><br><span class="line">  <span class="comment">// 超出了 age 的作用域</span></span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(age) <span class="comment">// 报错</span></span><br><span class="line">  </span><br><span class="line">  <span class="keyword">let</span> flag = <span class="literal">true</span>;</span><br><span class="line">  <span class="keyword">if</span>(flag) &#123;</span><br><span class="line">    <span class="comment">// str 只能在该代码块中被访问</span></span><br><span class="line">    <span class="keyword">let</span> str = <span class="string">&#x27;hello world!&#x27;</span></span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(str); <span class="comment">// 正常</span></span><br><span class="line">  &#125;</span><br><span class="line">  </span><br><span class="line">  <span class="comment">// 超出了 age 的作用域</span></span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(str); <span class="comment">// 报错</span></span><br><span class="line">  </span><br><span class="line">  <span class="keyword">for</span>(<span class="keyword">let</span> t = <span class="number">1</span>; t &lt;= <span class="number">6</span>; t++) &#123;</span><br><span class="line">    <span class="comment">// t 只能在该代码块中被访问</span></span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(t); <span class="comment">// 正常</span></span><br><span class="line">  &#125;</span><br><span class="line">  </span><br><span class="line">  <span class="comment">// 超出了 t 的作用域</span></span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(t); <span class="comment">// 报错</span></span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure>
+
+<p>JavaScript 中除了变量外还有常量，常量与变量本质的区别是【常量必须要有值且不允许被重新赋值】，常量值为对象时其属性和方法允许重新赋值。</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line">&lt;script&gt;</span><br><span class="line">  <span class="comment">// 必须要有值</span></span><br><span class="line">  <span class="keyword">const</span> version = <span class="string">&#x27;1.0.0&#x27;</span>;</span><br><span class="line"></span><br><span class="line">  <span class="comment">// 不能重新赋值</span></span><br><span class="line">  <span class="comment">// version = &#x27;1.0.1&#x27;;</span></span><br><span class="line"></span><br><span class="line">  <span class="comment">// 常量值为对象类型</span></span><br><span class="line">  <span class="keyword">const</span> user = &#123;</span><br><span class="line">    <span class="attr">name</span>: <span class="string">&#x27;小明&#x27;</span>,</span><br><span class="line">    <span class="attr">age</span>: <span class="number">18</span></span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="comment">// 不能重新赋值</span></span><br><span class="line">  user = &#123;&#125;;</span><br><span class="line"></span><br><span class="line">  <span class="comment">// 属性和方法允许被修改</span></span><br><span class="line">  user.<span class="property">name</span> = <span class="string">&#x27;小小明&#x27;</span>;</span><br><span class="line">  user.<span class="property">gender</span> = <span class="string">&#x27;男&#x27;</span>;</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>总结：</p>
+<ol>
+<li><code>let</code> 声明的变量会产生块作用域，<code>var</code> 不会产生块作用域</li>
+<li><code>const</code> 声明的常量也会产生块作用域</li>
+<li>不同代码块之间的变量无法互相访问</li>
+<li>推荐使用 <code>let</code> 或 <code>const</code></li>
+</ol>
+<p>注：开发中 <code>let</code> 和 <code>const</code> 经常不加区分的使用，如果担心某个值会不小被修改时，则只能使用 <code>const</code> 声明成常量。</p>
+</blockquote>
+<h4 id="2-全局作用域"><a href="#2-全局作用域" class="headerlink" title="2.全局作用域"></a>2.全局作用域</h4><p><code>&lt;script&gt;</code> 标签和 <code>.js</code> 文件的【最外层】就是所谓的全局作用域，在此声明的变量在函数内部也可以被访问。</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line">&lt;script&gt;</span><br><span class="line">  <span class="comment">// 此处是全局</span></span><br><span class="line">  </span><br><span class="line">  <span class="keyword">function</span> <span class="title function_">sayHi</span>(<span class="params"></span>) &#123;</span><br><span class="line">    <span class="comment">// 此处为局部</span></span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="comment">// 此处为全局</span></span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure>
+
+<p>全局作用域中声明的变量，任何其它作用域都可以被访问，如下代码所示：</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line">&lt;script&gt;</span><br><span class="line">    <span class="comment">// 全局变量 name</span></span><br><span class="line">    <span class="keyword">const</span> name = <span class="string">&#x27;小明&#x27;</span></span><br><span class="line">  </span><br><span class="line">  	<span class="comment">// 函数作用域中访问全局</span></span><br><span class="line">    <span class="keyword">function</span> <span class="title function_">sayHi</span>(<span class="params"></span>) &#123;</span><br><span class="line">      <span class="comment">// 此处为局部</span></span><br><span class="line">      <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;你好&#x27;</span> + name)</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 全局变量 flag 和 x</span></span><br><span class="line">    <span class="keyword">const</span> flag = <span class="literal">true</span></span><br><span class="line">    <span class="keyword">let</span> x = <span class="number">10</span></span><br><span class="line">  </span><br><span class="line">  	<span class="comment">// 块作用域中访问全局</span></span><br><span class="line">    <span class="keyword">if</span>(flag) &#123;</span><br><span class="line">      <span class="keyword">let</span> y = <span class="number">5</span></span><br><span class="line">      <span class="variable language_">console</span>.<span class="title function_">log</span>(x + y) <span class="comment">// x 是全局的</span></span><br><span class="line">    &#125;</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>总结：</p>
+<ol>
+<li>为 <code>window</code> 对象动态添加的属性默认也是全局的，不推荐！</li>
+<li>函数中未使用任何关键字声明的变量为全局变量，不推荐！！！</li>
+<li>尽可能少的声明全局变量，防止全局变量被污染</li>
+</ol>
+<p>JavaScript 中的作用域是程序被执行时的底层机制，了解这一机制有助于规范代码书写习惯，避免因作用域导致的语法错误。</p>
+</blockquote>
+<h4 id="3-作用域链"><a href="#3-作用域链" class="headerlink" title="3.作用域链"></a>3.作用域链</h4><p>在解释什么是作用域链前先来看一段代码：</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line">&lt;script&gt;</span><br><span class="line">  <span class="comment">// 全局作用域</span></span><br><span class="line">  <span class="keyword">let</span> a = <span class="number">1</span></span><br><span class="line">  <span class="keyword">let</span> b = <span class="number">2</span></span><br><span class="line">  <span class="comment">// 局部作用域</span></span><br><span class="line">  <span class="keyword">function</span> <span class="title function_">f</span>(<span class="params"></span>) &#123;</span><br><span class="line">    <span class="keyword">let</span> c</span><br><span class="line">    <span class="comment">// 局部作用域</span></span><br><span class="line">    <span class="keyword">function</span> <span class="title function_">g</span>(<span class="params"></span>) &#123;</span><br><span class="line">      <span class="keyword">let</span> d = <span class="string">&#x27;yo&#x27;</span></span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure>
+
+<p>函数内部允许创建新的函数，<code>f</code> 函数内部创建的新函数 <code>g</code>，会产生新的函数作用域，由此可知作用域产生了嵌套的关系。</p>
+<p>作用域链本质上是底层的变量查找机制，在函数被执行时，会优先查找当前函数作用域中查找变量，如果当前作用域查找不到则会依次逐级查找父级作用域直到全局作用域，如下代码所示：</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line">&lt;script&gt;</span><br><span class="line">  <span class="comment">// 全局作用域</span></span><br><span class="line">  <span class="keyword">let</span> a = <span class="number">1</span></span><br><span class="line">  <span class="keyword">let</span> b = <span class="number">2</span></span><br><span class="line"></span><br><span class="line">  <span class="comment">// 局部作用域</span></span><br><span class="line">  <span class="keyword">function</span> <span class="title function_">f</span>(<span class="params"></span>) &#123;</span><br><span class="line">    <span class="keyword">let</span> c</span><br><span class="line">    <span class="comment">// let a = 10;</span></span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(a) <span class="comment">// 1 或 10</span></span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(d) <span class="comment">// 报错</span></span><br><span class="line">    </span><br><span class="line">    <span class="comment">// 局部作用域</span></span><br><span class="line">    <span class="keyword">function</span> <span class="title function_">g</span>(<span class="params"></span>) &#123;</span><br><span class="line">      <span class="keyword">let</span> d = <span class="string">&#x27;yo&#x27;</span></span><br><span class="line">      <span class="comment">// let b = 20;</span></span><br><span class="line">      <span class="variable language_">console</span>.<span class="title function_">log</span>(b) <span class="comment">// 2 或 20</span></span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">// 调用 g 函数</span></span><br><span class="line">    <span class="title function_">g</span>()</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(c) <span class="comment">// 报错</span></span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(d) <span class="comment">// 报错</span></span><br><span class="line">  </span><br><span class="line">  <span class="title function_">f</span>();</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>总结：</p>
+<ol>
+<li>嵌套关系的作用域串联起来形成了作用域链</li>
+<li>相同作用域链中按着从小到大的规则查找变量</li>
+<li>子作用域能够访问父作用域，父级作用域无法访问子级作用域</li>
+</ol>
+</blockquote>
+<h4 id="4-闭包"><a href="#4-闭包" class="headerlink" title="4.闭包"></a>4.闭包</h4><p>闭包是一种比较特殊的函数，使用闭包能够访问函数作用域中的变量。从代码形式上看闭包是一个做为返回值的函数，如下代码所示：</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line">&lt;script&gt;</span><br><span class="line">  <span class="keyword">function</span> <span class="title function_">foo</span>(<span class="params"></span>) &#123;</span><br><span class="line">    <span class="keyword">let</span> i = <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 函数内部分函数</span></span><br><span class="line">    <span class="keyword">function</span> <span class="title function_">bar</span>(<span class="params"></span>) &#123;</span><br><span class="line">			<span class="variable language_">console</span>.<span class="title function_">log</span>(++i);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 将函数做为返回值</span></span><br><span class="line">    <span class="keyword">return</span> bar;</span><br><span class="line">  &#125;</span><br><span class="line">  </span><br><span class="line">  <span class="comment">// fn 即为闭包函数</span></span><br><span class="line">  <span class="keyword">let</span> fn = <span class="title function_">foo</span>();</span><br><span class="line">  </span><br><span class="line">  <span class="title function_">fn</span>(); <span class="comment">// 1</span></span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>总结：</p>
+<ol>
+<li>闭包本质仍是函数，只不是从函数内部返回的</li>
+<li>闭包能够创建外部可访问的隔离作用域，避免全局变量污染</li>
+<li>过度使用闭包可能造成内存泄漏</li>
+</ol>
+<p>注：回调函数也能访问函数内部的局部变量。</p>
+</blockquote>
+<h4 id="5-变量提升"><a href="#5-变量提升" class="headerlink" title="5.变量提升"></a>5.变量提升</h4><p>变量提升是 JavaScript 中比较“奇怪”的现象，它允许在变量声明之前即被访问，</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line">&lt;script&gt;</span><br><span class="line">  <span class="comment">// 访问变量 str</span></span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(str + <span class="string">&#x27;world!&#x27;</span>);</span><br><span class="line"></span><br><span class="line">  <span class="comment">// 声明变量 str</span></span><br><span class="line">  <span class="keyword">var</span> str = <span class="string">&#x27;hello &#x27;</span>;</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>总结：</p>
+<ol>
+<li>变量在未声明即被访问时会报语法错误</li>
+<li>变量在声明之前即被访问，变量的值为 <code>undefined</code></li>
+<li><code>let</code> 声明的变量不存在变量提升，推荐使用 <code>let</code></li>
+<li>变量提升出现在相同作用域当中</li>
+<li>实际开发中推荐先声明再访问变量</li>
+</ol>
+<p>注：关于变量提升的原理分析会涉及较为复杂的词法分析等知识，而开发中使用 <code>let</code> 可以轻松规避变量的提升，因此在此不做过多的探讨，有兴趣可<a href="https://segmentfault.com/a/1190000013915935">查阅资料</a>。</p>
+</blockquote>
 ]]></content>
       <categories>
         <category>JS进阶</category>
@@ -716,67 +959,6 @@
 
 <h6 id="展开运算符与剩余参数的区别"><a href="#展开运算符与剩余参数的区别" class="headerlink" title="展开运算符与剩余参数的区别"></a>展开运算符与剩余参数的区别</h6><p>展开运算符主要是用于 展开数组</p>
 <p>剩余参数 在函数内部使用，接收多余的实参</p>
-]]></content>
-      <categories>
-        <category>JS进阶</category>
-      </categories>
-      <tags>
-        <tag>JS进阶</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>箭头函数</title>
-    <url>/2022/08/22/JS%E8%BF%9B%E9%98%B6/%E7%AE%AD%E5%A4%B4%E5%87%BD%E6%95%B0/</url>
-    <content><![CDATA[<h3 id="箭头函数的基本语法"><a href="#箭头函数的基本语法" class="headerlink" title="箭头函数的基本语法"></a>箭头函数的基本语法</h3><span id="more"></span>
-
-<h6 id="箭头函数-用于替代函数表达式-属于表达式函数，因此不存在函数提升"><a href="#箭头函数-用于替代函数表达式-属于表达式函数，因此不存在函数提升" class="headerlink" title="箭头函数 用于替代函数表达式 属于表达式函数，因此不存在函数提升"></a>箭头函数 用于替代函数表达式 属于表达式函数，因此不存在函数提升</h6><blockquote>
-<p>原函数表达式语法</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> fn = <span class="keyword">function</span> (<span class="params"></span>) &#123;</span><br><span class="line">   <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="number">123</span>);</span><br><span class="line">&#125;</span><br><span class="line"><span class="title function_">fn</span>()</span><br></pre></td></tr></table></figure>
-</blockquote>
-<blockquote>
-<p>箭头函数基本语法</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> <span class="title function_">fn</span> = (<span class="params"></span>) =&gt; &#123;</span><br><span class="line">   <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="number">123</span>);</span><br><span class="line"> &#125;</span><br><span class="line"><span class="title function_">fn</span>()</span><br></pre></td></tr></table></figure>
-</blockquote>
-<blockquote>
-<p>箭头函数传参</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> <span class="title function_">fn</span> = (<span class="params">x</span>) =&gt; &#123;</span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(x);</span><br><span class="line">&#125;</span><br><span class="line"><span class="title function_">fn</span>(<span class="number">123</span>)</span><br></pre></td></tr></table></figure>
-</blockquote>
-<blockquote>
-<ol>
-<li>只有一个形参时，小括号可以省略</li>
-</ol>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> <span class="title function_">fn</span> = x =&gt; &#123;</span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(x);</span><br><span class="line">&#125;</span><br><span class="line"><span class="title function_">fn</span>(<span class="number">123</span>)</span><br></pre></td></tr></table></figure>
-
-<ol start="2">
-<li>只有一行代码时，可以省略大括号 默认直接将代码的值return出去</li>
-</ol>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> <span class="title function_">fn</span> = x =&gt; <span class="variable language_">console</span>.<span class="title function_">log</span>(x);</span><br><span class="line"><span class="title function_">fn</span>(<span class="number">123</span>)</span><br></pre></td></tr></table></figure>
-
-<ol start="3">
-<li>只有一行代码时，可以省略return</li>
-</ol>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> <span class="title function_">fn</span> = x =&gt; x + x</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="title function_">fn</span>(<span class="number">1</span>))</span><br></pre></td></tr></table></figure>
-
-<ol start="4">
-<li>箭头函数可以直接返回一个对象 注意为了区分函数的大括号和对象的大括号，对象要用小括号包裹起来</li>
-</ol>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> <span class="title function_">fn</span> = uname =&gt; (&#123; <span class="attr">uname</span>: uname &#125;)</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="title function_">fn</span>(<span class="string">&#x27;亚索&#x27;</span>));<span class="comment">//&#123;uname:亚索&#125;</span></span><br></pre></td></tr></table></figure>
-</blockquote>
-<h3 id="箭头函数的参数"><a href="#箭头函数的参数" class="headerlink" title="箭头函数的参数"></a>箭头函数的参数</h3><h6 id="箭头函数中没有动态参数，只有剩余参数"><a href="#箭头函数中没有动态参数，只有剩余参数" class="headerlink" title="箭头函数中没有动态参数，只有剩余参数"></a>箭头函数中没有动态参数，只有剩余参数</h6><blockquote>
-<p>使用箭头函数来求和</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> <span class="title function_">getSum</span> = (<span class="params">...arr</span>) =&gt; &#123;</span><br><span class="line">  <span class="keyword">let</span> sum = <span class="number">0</span></span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; arr.<span class="property">length</span>; i++) &#123;</span><br><span class="line">     sum += arr[i]</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> sum</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">const</span> reSult = <span class="title function_">getSum</span>(<span class="number">5</span>, <span class="number">6</span>, <span class="number">7</span>, <span class="number">8</span>)</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(reSult);</span><br></pre></td></tr></table></figure>
-</blockquote>
-<h3 id="箭头函数的this指向"><a href="#箭头函数的this指向" class="headerlink" title="箭头函数的this指向"></a>箭头函数的this指向</h3><blockquote>
-<p>一般js的this指向：谁调用this，this就指向谁</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="variable language_">this</span>);<span class="comment">//指向window</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">fn</span>(<span class="params"></span>) &#123;</span><br><span class="line"> <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="variable language_">this</span>);<span class="comment">//指向window</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="title function_">fn</span>()</span><br><span class="line"></span><br><span class="line"><span class="comment">//对象方法里的this</span></span><br><span class="line"><span class="keyword">const</span> obj = &#123;</span><br><span class="line">  <span class="attr">name</span>: <span class="string">&#x27;梓川&#x27;</span>,</span><br><span class="line">  <span class="attr">sayHi</span>: <span class="keyword">function</span> (<span class="params"></span>) &#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="variable language_">this</span>); <span class="comment">//指向obj</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line">obj.<span class="title function_">sayHi</span>()</span><br></pre></td></tr></table></figure>
-</blockquote>
-<blockquote>
-<p>箭头函数的this指向</p>
-<p>&#x3D;&#x3D;箭头函数不会创建自己的this，它只会从自己的作用域链的上一层沿用this&#x3D;&#x3D;</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> <span class="title function_">fn1</span> = (<span class="params"></span>) =&gt; &#123;</span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="variable language_">this</span>); <span class="comment">//指向window</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="title function_">fn1</span>()</span><br><span class="line"></span><br><span class="line"><span class="comment">//对象里的方法箭头函数的this指向</span></span><br><span class="line"><span class="keyword">const</span> obj1 = &#123;</span><br><span class="line">   <span class="attr">name</span>: <span class="string">&#x27;&#x27;</span>,</span><br><span class="line">   <span class="attr">sayHi</span>: <span class="function">() =&gt;</span> &#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="variable language_">this</span>);<span class="comment">// 指向window</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line">obj1.<span class="title function_">sayHi</span>()</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> obj2 = &#123;</span><br><span class="line"> <span class="attr">name</span>: <span class="string">&#x27;梓川&#x27;</span>,</span><br><span class="line"> <span class="attr">sayHi</span>: <span class="keyword">function</span> (<span class="params"></span>) &#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="variable language_">this</span>);<span class="comment">//指向obj2</span></span><br><span class="line">    <span class="keyword">const</span> <span class="title function_">count</span> = (<span class="params"></span>) =&gt; &#123;</span><br><span class="line">      <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="variable language_">this</span>); <span class="comment">//指向obj2</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="title function_">count</span>()</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line">obj2.<span class="title function_">sayHi</span>()</span><br></pre></td></tr></table></figure>
-
-<p>在开发中使用箭头函数前需要考虑this的值，事件回调函数使用箭头函数时，this为全局的window，因此DOM事件回调函数为了简便，还是不太推荐使用箭头函数</p>
-</blockquote>
 ]]></content>
       <categories>
         <category>JS进阶</category>
@@ -841,6 +1023,67 @@
 
 <h5 id="2-以数组开头，并且前面还有一行代码的时候"><a href="#2-以数组开头，并且前面还有一行代码的时候" class="headerlink" title="2.以数组开头，并且前面还有一行代码的时候"></a>2.以数组开头，并且前面还有一行代码的时候</h5><figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> str = <span class="string">&#x27;pink&#x27;</span></span><br><span class="line">  ;[<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>].<span class="title function_">map</span>(<span class="keyword">function</span> (<span class="params">item</span>) &#123;<span class="comment">//分号一般加在这里</span></span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(item);</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
 
+]]></content>
+      <categories>
+        <category>JS进阶</category>
+      </categories>
+      <tags>
+        <tag>JS进阶</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>箭头函数</title>
+    <url>/2022/08/22/JS%E8%BF%9B%E9%98%B6/%E7%AE%AD%E5%A4%B4%E5%87%BD%E6%95%B0/</url>
+    <content><![CDATA[<h3 id="箭头函数的基本语法"><a href="#箭头函数的基本语法" class="headerlink" title="箭头函数的基本语法"></a>箭头函数的基本语法</h3><span id="more"></span>
+
+<h6 id="箭头函数-用于替代函数表达式-属于表达式函数，因此不存在函数提升"><a href="#箭头函数-用于替代函数表达式-属于表达式函数，因此不存在函数提升" class="headerlink" title="箭头函数 用于替代函数表达式 属于表达式函数，因此不存在函数提升"></a>箭头函数 用于替代函数表达式 属于表达式函数，因此不存在函数提升</h6><blockquote>
+<p>原函数表达式语法</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> fn = <span class="keyword">function</span> (<span class="params"></span>) &#123;</span><br><span class="line">   <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="number">123</span>);</span><br><span class="line">&#125;</span><br><span class="line"><span class="title function_">fn</span>()</span><br></pre></td></tr></table></figure>
+</blockquote>
+<blockquote>
+<p>箭头函数基本语法</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> <span class="title function_">fn</span> = (<span class="params"></span>) =&gt; &#123;</span><br><span class="line">   <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="number">123</span>);</span><br><span class="line"> &#125;</span><br><span class="line"><span class="title function_">fn</span>()</span><br></pre></td></tr></table></figure>
+</blockquote>
+<blockquote>
+<p>箭头函数传参</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> <span class="title function_">fn</span> = (<span class="params">x</span>) =&gt; &#123;</span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(x);</span><br><span class="line">&#125;</span><br><span class="line"><span class="title function_">fn</span>(<span class="number">123</span>)</span><br></pre></td></tr></table></figure>
+</blockquote>
+<blockquote>
+<ol>
+<li>只有一个形参时，小括号可以省略</li>
+</ol>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> <span class="title function_">fn</span> = x =&gt; &#123;</span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(x);</span><br><span class="line">&#125;</span><br><span class="line"><span class="title function_">fn</span>(<span class="number">123</span>)</span><br></pre></td></tr></table></figure>
+
+<ol start="2">
+<li>只有一行代码时，可以省略大括号 默认直接将代码的值return出去</li>
+</ol>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> <span class="title function_">fn</span> = x =&gt; <span class="variable language_">console</span>.<span class="title function_">log</span>(x);</span><br><span class="line"><span class="title function_">fn</span>(<span class="number">123</span>)</span><br></pre></td></tr></table></figure>
+
+<ol start="3">
+<li>只有一行代码时，可以省略return</li>
+</ol>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> <span class="title function_">fn</span> = x =&gt; x + x</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="title function_">fn</span>(<span class="number">1</span>))</span><br></pre></td></tr></table></figure>
+
+<ol start="4">
+<li>箭头函数可以直接返回一个对象 注意为了区分函数的大括号和对象的大括号，对象要用小括号包裹起来</li>
+</ol>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> <span class="title function_">fn</span> = uname =&gt; (&#123; <span class="attr">uname</span>: uname &#125;)</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="title function_">fn</span>(<span class="string">&#x27;亚索&#x27;</span>));<span class="comment">//&#123;uname:亚索&#125;</span></span><br></pre></td></tr></table></figure>
+</blockquote>
+<h3 id="箭头函数的参数"><a href="#箭头函数的参数" class="headerlink" title="箭头函数的参数"></a>箭头函数的参数</h3><h6 id="箭头函数中没有动态参数，只有剩余参数"><a href="#箭头函数中没有动态参数，只有剩余参数" class="headerlink" title="箭头函数中没有动态参数，只有剩余参数"></a>箭头函数中没有动态参数，只有剩余参数</h6><blockquote>
+<p>使用箭头函数来求和</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> <span class="title function_">getSum</span> = (<span class="params">...arr</span>) =&gt; &#123;</span><br><span class="line">  <span class="keyword">let</span> sum = <span class="number">0</span></span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; arr.<span class="property">length</span>; i++) &#123;</span><br><span class="line">     sum += arr[i]</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> sum</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">const</span> reSult = <span class="title function_">getSum</span>(<span class="number">5</span>, <span class="number">6</span>, <span class="number">7</span>, <span class="number">8</span>)</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(reSult);</span><br></pre></td></tr></table></figure>
+</blockquote>
+<h3 id="箭头函数的this指向"><a href="#箭头函数的this指向" class="headerlink" title="箭头函数的this指向"></a>箭头函数的this指向</h3><blockquote>
+<p>一般js的this指向：谁调用this，this就指向谁</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="variable language_">this</span>);<span class="comment">//指向window</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">fn</span>(<span class="params"></span>) &#123;</span><br><span class="line"> <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="variable language_">this</span>);<span class="comment">//指向window</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="title function_">fn</span>()</span><br><span class="line"></span><br><span class="line"><span class="comment">//对象方法里的this</span></span><br><span class="line"><span class="keyword">const</span> obj = &#123;</span><br><span class="line">  <span class="attr">name</span>: <span class="string">&#x27;梓川&#x27;</span>,</span><br><span class="line">  <span class="attr">sayHi</span>: <span class="keyword">function</span> (<span class="params"></span>) &#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="variable language_">this</span>); <span class="comment">//指向obj</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line">obj.<span class="title function_">sayHi</span>()</span><br></pre></td></tr></table></figure>
+</blockquote>
+<blockquote>
+<p>箭头函数的this指向</p>
+<p>&#x3D;&#x3D;箭头函数不会创建自己的this，它只会从自己的作用域链的上一层沿用this&#x3D;&#x3D;</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> <span class="title function_">fn1</span> = (<span class="params"></span>) =&gt; &#123;</span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="variable language_">this</span>); <span class="comment">//指向window</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="title function_">fn1</span>()</span><br><span class="line"></span><br><span class="line"><span class="comment">//对象里的方法箭头函数的this指向</span></span><br><span class="line"><span class="keyword">const</span> obj1 = &#123;</span><br><span class="line">   <span class="attr">name</span>: <span class="string">&#x27;&#x27;</span>,</span><br><span class="line">   <span class="attr">sayHi</span>: <span class="function">() =&gt;</span> &#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="variable language_">this</span>);<span class="comment">// 指向window</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line">obj1.<span class="title function_">sayHi</span>()</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> obj2 = &#123;</span><br><span class="line"> <span class="attr">name</span>: <span class="string">&#x27;梓川&#x27;</span>,</span><br><span class="line"> <span class="attr">sayHi</span>: <span class="keyword">function</span> (<span class="params"></span>) &#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="variable language_">this</span>);<span class="comment">//指向obj2</span></span><br><span class="line">    <span class="keyword">const</span> <span class="title function_">count</span> = (<span class="params"></span>) =&gt; &#123;</span><br><span class="line">      <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="variable language_">this</span>); <span class="comment">//指向obj2</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="title function_">count</span>()</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line">obj2.<span class="title function_">sayHi</span>()</span><br></pre></td></tr></table></figure>
+
+<p>在开发中使用箭头函数前需要考虑this的值，事件回调函数使用箭头函数时，this为全局的window，因此DOM事件回调函数为了简便，还是不太推荐使用箭头函数</p>
+</blockquote>
 ]]></content>
       <categories>
         <category>JS进阶</category>

@@ -2,6 +2,24 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://zicuan123.github.io/2022/08/23/JS%E5%9F%BA%E7%A1%80/%E5%90%84%E7%A7%8DAPI/</loc>
+    
+    <lastmod>2022-08-23</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>http://zicuan123.github.io/2022/08/23/JS%E8%BF%9B%E9%98%B6/%E4%BD%9C%E7%94%A8%E5%9F%9F/</loc>
+    
+    <lastmod>2022-08-23</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>http://zicuan123.github.io/2022/08/22/JS%E8%BF%9B%E9%98%B6/filter%E7%AD%9B%E9%80%89%E6%95%B0%E7%BB%84/</loc>
     
     <lastmod>2022-08-22</lastmod>
@@ -148,7 +166,7 @@
 
   <url>
     <loc>http://zicuan123.github.io/</loc>
-    <lastmod>2022-08-22</lastmod>
+    <lastmod>2022-08-23</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
   </url>
@@ -156,63 +174,63 @@
   
   <url>
     <loc>http://zicuan123.github.io/tags/hexo%E6%90%AD%E5%BB%BA/</loc>
-    <lastmod>2022-08-22</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>http://zicuan123.github.io/tags/next%E4%B8%BB%E9%A2%98/</loc>
-    <lastmod>2022-08-22</lastmod>
+    <lastmod>2022-08-23</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>http://zicuan123.github.io/tags/git/</loc>
-    <lastmod>2022-08-22</lastmod>
+    <lastmod>2022-08-23</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>http://zicuan123.github.io/tags/markdown/</loc>
-    <lastmod>2022-08-22</lastmod>
+    <lastmod>2022-08-23</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>http://zicuan123.github.io/tags/%E7%BB%88%E7%AB%AF%E5%91%BD%E4%BB%A4/</loc>
-    <lastmod>2022-08-22</lastmod>
+    <lastmod>2022-08-23</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
-    <loc>http://zicuan123.github.io/tags/HTML/</loc>
-    <lastmod>2022-08-22</lastmod>
+    <loc>http://zicuan123.github.io/tags/next%E4%B8%BB%E9%A2%98/</loc>
+    <lastmod>2022-08-23</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>http://zicuan123.github.io/tags/CSS/</loc>
-    <lastmod>2022-08-22</lastmod>
+    <lastmod>2022-08-23</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>http://zicuan123.github.io/tags/HTML/</loc>
+    <lastmod>2022-08-23</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>http://zicuan123.github.io/tags/JavaScript/</loc>
-    <lastmod>2022-08-22</lastmod>
+    <lastmod>2022-08-23</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>http://zicuan123.github.io/tags/JS%E8%BF%9B%E9%98%B6/</loc>
-    <lastmod>2022-08-22</lastmod>
+    <lastmod>2022-08-23</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
@@ -221,49 +239,49 @@
   
   <url>
     <loc>http://zicuan123.github.io/categories/Hexo/</loc>
-    <lastmod>2022-08-22</lastmod>
+    <lastmod>2022-08-23</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>http://zicuan123.github.io/categories/git/</loc>
-    <lastmod>2022-08-22</lastmod>
+    <lastmod>2022-08-23</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>http://zicuan123.github.io/categories/MarkDown/</loc>
-    <lastmod>2022-08-22</lastmod>
+    <lastmod>2022-08-23</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>http://zicuan123.github.io/categories/%E7%BB%88%E7%AB%AF%E5%91%BD%E4%BB%A4/</loc>
-    <lastmod>2022-08-22</lastmod>
+    <lastmod>2022-08-23</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>http://zicuan123.github.io/categories/HTML/</loc>
-    <lastmod>2022-08-22</lastmod>
+    <lastmod>2022-08-23</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>http://zicuan123.github.io/categories/JS%E5%9F%BA%E7%A1%80/</loc>
-    <lastmod>2022-08-22</lastmod>
+    <lastmod>2022-08-23</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>http://zicuan123.github.io/categories/JS%E8%BF%9B%E9%98%B6/</loc>
-    <lastmod>2022-08-22</lastmod>
+    <lastmod>2022-08-23</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
