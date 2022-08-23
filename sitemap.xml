@@ -180,6 +180,13 @@
   </url>
   
   <url>
+    <loc>http://zicuan123.github.io/tags/next%E4%B8%BB%E9%A2%98/</loc>
+    <lastmod>2022-08-23</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
     <loc>http://zicuan123.github.io/tags/git/</loc>
     <lastmod>2022-08-23</lastmod>
     <changefreq>weekly</changefreq>
@@ -201,7 +208,7 @@
   </url>
   
   <url>
-    <loc>http://zicuan123.github.io/tags/next%E4%B8%BB%E9%A2%98/</loc>
+    <loc>http://zicuan123.github.io/tags/HTML/</loc>
     <lastmod>2022-08-23</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -209,13 +216,6 @@
   
   <url>
     <loc>http://zicuan123.github.io/tags/CSS/</loc>
-    <lastmod>2022-08-23</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>http://zicuan123.github.io/tags/HTML/</loc>
     <lastmod>2022-08-23</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>

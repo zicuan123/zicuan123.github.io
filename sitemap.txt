@@ -18,12 +18,12 @@ http://zicuan123.github.io/categories/index.html
 http://zicuan123.github.io/tags/index.html
 http://zicuan123.github.io/
 http://zicuan123.github.io/tags/hexo%E6%90%AD%E5%BB%BA/
+http://zicuan123.github.io/tags/next%E4%B8%BB%E9%A2%98/
 http://zicuan123.github.io/tags/git/
 http://zicuan123.github.io/tags/markdown/
 http://zicuan123.github.io/tags/%E7%BB%88%E7%AB%AF%E5%91%BD%E4%BB%A4/
-http://zicuan123.github.io/tags/next%E4%B8%BB%E9%A2%98/
-http://zicuan123.github.io/tags/CSS/
 http://zicuan123.github.io/tags/HTML/
+http://zicuan123.github.io/tags/CSS/
 http://zicuan123.github.io/tags/JavaScript/
 http://zicuan123.github.io/tags/JS%E8%BF%9B%E9%98%B6/
 http://zicuan123.github.io/categories/Hexo/
